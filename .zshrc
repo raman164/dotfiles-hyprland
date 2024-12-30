@@ -43,6 +43,8 @@ alias ll='eza -al --icons=always'
 alias lt='eza -a --tree --level=1 --icons=always'
 alias y='yazi'
 alias wtr='curl wttr.in/Richmond+Hill'
+alias rw='richweather'
+
 
 
 
@@ -167,3 +169,6 @@ if command -v lsd > /dev/null; then
   alias ll='eza -al --icons=always'
   alias lt='eza -a --tree --level=1 --icons=always'
 fi
+
+# Created by `pipx` on 2024-12-30 18:15:22
+export PATH="$PATH:/home/rbedit7/.local/bin"
