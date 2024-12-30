@@ -1,0 +1,16 @@
+2024-05-26 14:07:44.890 [info] (Client) Pylance async client (2024.5.1) started with python extension (2024.4.1)
+2024-05-26 14:07:45.680 [info] [Info  - 2:07:45 PM] (7307) Pylance language server 2024.5.1 (pyright version 1.1.360, commit 4bc8428d) starting
+2024-05-26 14:07:45.686 [info] [Info  - 2:07:45 PM] (7307) Server root directory: file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist
+2024-05-26 14:07:45.686 [info] [Info  - 2:07:45 PM] (7307) Starting service instance "python"
+2024-05-26 14:07:45.687 [info] [Info  - 2:07:45 PM] (7307) Auto-Indent enabled
+2024-05-26 14:07:45.714 [info] [Info  - 2:07:45 PM] (7307) Setting pythonPath for service "python": "/home/rbedit7/python/.venv/bin/python"
+2024-05-26 14:07:45.715 [info] [Info  - 2:07:45 PM] (7307) Setting environmentName for service "python": "3.12.3 (.venv venv)"
+2024-05-26 14:07:45.746 [info] [Info  - 2:07:45 PM] (7307) Assuming Python version 3.12.3.final.0
+2024-05-26 14:07:45.820 [info] [Info  - 2:07:45 PM] (7307) Found 1 source file
+2024-05-26 14:07:46.419 [info] [Info  - 2:07:46 PM] (7307) Background analysis(1) root directory: file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist
+2024-05-26 14:07:46.421 [info] [Info  - 2:07:46 PM] (7307) Background analysis(1) started
+2024-05-26 14:07:46.466 [info] [Info  - 2:07:46 PM] (7307) Indexer background runner(2) root directory: file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist (index)
+2024-05-26 14:07:46.466 [info] [Info  - 2:07:46 PM] (7307) Indexing(2) started
+2024-05-26 14:07:46.834 [info] [Info  - 2:07:46 PM] (7307) scanned(2) 12 files over 1 exec env
+2024-05-26 14:07:47.011 [info] [Info  - 2:07:47 PM] (7307) indexed(2) 3 files over 1 exec env
+2024-05-26 14:07:47.019 [info] [Info  - 2:07:47 PM] (7307) Indexing finished(2).

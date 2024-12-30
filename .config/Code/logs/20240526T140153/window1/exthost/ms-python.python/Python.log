@@ -1,0 +1,40 @@
+2024-05-26 14:01:56.127 [info] Experiment 'pythonRecommendTensorboardExt' is active
+2024-05-26 14:01:56.127 [info] Experiment 'pythonTerminalEnvVarActivation' is active
+2024-05-26 14:01:56.127 [info] Experiment 'pythonTestAdapter' is active
+2024-05-26 14:01:56.127 [info] Default formatter is set to null for workspace /home/rbedit7/python
+2024-05-26 14:01:56.127 [info] Test server listening.
+2024-05-26 14:01:56.154 [info] > ./.venv/bin/python -I ~/.vscode/extensions/ms-python.python-2024.4.1/python_files/get_output_via_markers.py ~/.vscode/extensions/ms-python.python-2024.4.1/python_files/interpreterInfo.py
+2024-05-26 14:01:56.496 [info] Python interpreter path: ./.venv/bin/python
+2024-05-26 14:01:56.518 [info] > pyenv which python
+2024-05-26 14:01:56.518 [info] cwd: .
+2024-05-26 14:01:56.653 [info] > . ./.venv/bin/activate && echo 'e8b39361-0157-4923-80e1-22d70d46dee6' && python ~/.vscode/extensions/ms-python.python-2024.4.1/python_files/printEnvVariables.py
+2024-05-26 14:01:56.653 [info] shell: zsh
+2024-05-26 14:01:56.775 [info] > /bin/python ~/.vscode/extensions/ms-python.python-2024.4.1/python_files/printEnvVariables.py
+2024-05-26 14:01:56.775 [info] shell: zsh
+2024-05-26 14:01:56.835 [info] Prepending environment variable PATH in collection with /home/rbedit7/.vscode/extensions/ms-python.python-2024.4.1/python_files/deactivate/zsh:/home/rbedit7/python/.venv/bin: {"applyAtShellIntegration":true,"applyAtProcessCreation":true}
+2024-05-26 14:01:56.835 [info] Setting environment variable VIRTUAL_ENV in collection to /home/rbedit7/python/.venv {"applyAtShellIntegration":true,"applyAtProcessCreation":true}
+2024-05-26 14:01:56.835 [info] Prepending environment variable PS1 in collection with (.venv)  {"applyAtShellIntegration":true,"applyAtProcessCreation":false}
+2024-05-26 14:01:56.835 [info] Setting environment variable VIRTUAL_ENV_PROMPT in collection to (.venv)  {"applyAtShellIntegration":true,"applyAtProcessCreation":true}
+2024-05-26 14:01:56.837 [info] Send text to terminal: /bin/python /home/rbedit7/.vscode/extensions/ms-python.python-2024.4.1/python_files/printEnvVariablesToFile.py /home/rbedit7/.vscode/extensions/ms-python.python-2024.4.1/python_files/deactivate/zsh/envVars.txt
+2024-05-26 14:01:57.991 [info] Starting Pylance language server.
+2024-05-26 14:03:36.920 [info] Experiment 'pythonRecommendTensorboardExt' is active
+2024-05-26 14:03:36.920 [info] Experiment 'pythonTerminalEnvVarActivation' is active
+2024-05-26 14:03:36.920 [info] Experiment 'pythonTestAdapter' is active
+2024-05-26 14:03:37.012 [info] Default formatter is set to null for workspace /home/rbedit7/python
+2024-05-26 14:03:37.047 [info] Test server listening.
+2024-05-26 14:03:37.556 [info] > pyenv which python
+2024-05-26 14:03:37.556 [info] cwd: .
+2024-05-26 14:03:37.599 [info] > ./.venv/bin/python -I ~/.vscode/extensions/ms-python.python-2024.4.1/python_files/get_output_via_markers.py ~/.vscode/extensions/ms-python.python-2024.4.1/python_files/interpreterInfo.py
+2024-05-26 14:03:37.695 [info] Python interpreter path: ./.venv/bin/python
+2024-05-26 14:03:38.118 [info] > . ./.venv/bin/activate && echo 'e8b39361-0157-4923-80e1-22d70d46dee6' && python ~/.vscode/extensions/ms-python.python-2024.4.1/python_files/printEnvVariables.py
+2024-05-26 14:03:38.118 [info] shell: zsh
+2024-05-26 14:03:38.196 [info] > /bin/python ~/.vscode/extensions/ms-python.python-2024.4.1/python_files/printEnvVariables.py
+2024-05-26 14:03:38.196 [info] shell: zsh
+2024-05-26 14:03:38.234 [info] Prepending environment variable PATH in collection with /home/rbedit7/.vscode/extensions/ms-python.python-2024.4.1/python_files/deactivate/zsh:/home/rbedit7/python/.venv/bin: {"applyAtShellIntegration":true,"applyAtProcessCreation":true}
+2024-05-26 14:03:38.234 [info] Setting environment variable VIRTUAL_ENV in collection to /home/rbedit7/python/.venv {"applyAtShellIntegration":true,"applyAtProcessCreation":true}
+2024-05-26 14:03:38.234 [info] Prepending environment variable PS1 in collection with (.venv)  {"applyAtShellIntegration":true,"applyAtProcessCreation":false}
+2024-05-26 14:03:38.234 [info] Setting environment variable VIRTUAL_ENV_PROMPT in collection to (.venv)  {"applyAtShellIntegration":true,"applyAtProcessCreation":true}
+2024-05-26 14:03:38.235 [info] Send text to terminal: /bin/python /home/rbedit7/.vscode/extensions/ms-python.python-2024.4.1/python_files/printEnvVariablesToFile.py /home/rbedit7/.vscode/extensions/ms-python.python-2024.4.1/python_files/deactivate/zsh/envVars.txt
+2024-05-26 14:03:39.075 [info] Starting Pylance language server.
+2024-05-26 14:03:55.862 [info] Discover tests for workspace name: undefined - uri: /home/rbedit7/.config/Code/User/settings.json
+2024-05-26 14:06:55.734 [info] Discover tests for workspace name: python - uri: /home/rbedit7/python/.vscode/settings.json

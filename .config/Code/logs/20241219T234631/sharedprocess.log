@@ -1,0 +1,103 @@
+2024-12-19 23:46:39.737 [info] Getting Manifest... ms-python.debugpy
+2024-12-19 23:46:39.739 [info] Getting Manifest... ms-python.python
+2024-12-19 23:46:39.741 [info] Getting Manifest... ms-python.vscode-pylance
+2024-12-19 23:46:39.855 [info] Installing extension: ms-python.vscode-pylance
+2024-12-19 23:46:39.857 [info] Installing extension: ms-python.debugpy
+2024-12-19 23:46:39.860 [info] Installing extension: ms-python.python
+2024-12-19 23:46:40.959 [info] Getting Manifest... ms-python.python
+2024-12-19 23:46:41.018 [info] Getting Manifest... ms-python.python
+2024-12-19 23:46:41.150 [info] Waiting for already requested installing extension ms-python.python ms-python.debugpy
+2024-12-19 23:46:41.167 [info] Waiting for already requested installing extension ms-python.python ms-python.vscode-pylance
+2024-12-19 23:46:43.790 [info] Extension signature verification result for ms-python.python: Success. Duration: 1617ms.
+2024-12-19 23:46:44.287 [info] Extension signature verification result for ms-python.debugpy: Success. Duration: 1636ms.
+2024-12-19 23:46:44.890 [info] Extracted extension to file:///home/rbedit7/.vscode/extensions/ms-python.debugpy-2024.8.0-linux-x64: ms-python.debugpy
+2024-12-19 23:46:44.900 [info] Renamed to /home/rbedit7/.vscode/extensions/ms-python.debugpy-2024.8.0-linux-x64
+2024-12-19 23:46:44.907 [info] Extracting extension completed. ms-python.debugpy
+2024-12-19 23:46:44.938 [info] Marked extension as uninstalled ms-python.debugpy-2024.6.0-linux-x64
+2024-12-19 23:46:45.006 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp'
+    at a.create (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30019)
+    at b (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30130)
+    at t.hb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:36600)
+    at t.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:29040)
+    at async $.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:16186)
+    at async J.sb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:104:109501)
+2024-12-19 23:46:45.147 [info] Extension signature verification result for ms-python.vscode-pylance: Success. Duration: 1461ms.
+2024-12-19 23:46:46.306 [info] Extracted extension to file:///home/rbedit7/.vscode/extensions/ms-python.python-2024.14.0-linux-x64: ms-python.python
+2024-12-19 23:46:46.319 [info] Renamed to /home/rbedit7/.vscode/extensions/ms-python.python-2024.14.0-linux-x64
+2024-12-19 23:46:46.325 [info] Extracting extension completed. ms-python.python
+2024-12-19 23:46:46.340 [info] Extension installed successfully: ms-python.python
+2024-12-19 23:46:46.341 [info] Finished waiting for already requested installing extension ms-python.python ms-python.debugpy
+2024-12-19 23:46:46.341 [info] Finished waiting for already requested installing extension ms-python.python ms-python.vscode-pylance
+2024-12-19 23:46:46.341 [info] Extension installed successfully: ms-python.debugpy
+2024-12-19 23:46:46.357 [info] Marked extension as uninstalled ms-python.python-2024.4.1
+2024-12-19 23:46:46.358 [info] Marked extension as uninstalled ms-python.python-2024.6.0
+2024-12-19 23:46:46.408 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp'
+    at a.create (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30019)
+    at b (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30130)
+    at t.hb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:36600)
+    at t.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:29040)
+    at async $.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:16186)
+    at async J.sb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:104:109501)
+2024-12-19 23:46:48.710 [info] Extracted extension to file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.8.2: ms-python.vscode-pylance
+2024-12-19 23:46:48.722 [info] Renamed to /home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.8.2
+2024-12-19 23:46:48.728 [info] Extracting extension completed. ms-python.vscode-pylance
+2024-12-19 23:46:48.752 [info] Extension installed successfully: ms-python.vscode-pylance
+2024-12-19 23:46:48.766 [info] Marked extension as uninstalled ms-python.vscode-pylance-2024.5.1
+2024-12-19 23:46:48.819 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp'
+    at a.create (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30019)
+    at b (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30130)
+    at t.hb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:36600)
+    at t.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:29040)
+    at async $.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:16186)
+    at async J.sb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:104:109501)
+2024-12-19 23:47:03.021 [info] Getting Manifest... ms-python.debugpy
+2024-12-19 23:47:03.026 [info] Getting Manifest... ms-python.python
+2024-12-19 23:47:03.027 [info] Getting Manifest... ms-python.vscode-pylance
+2024-12-19 23:47:03.067 [info] Installing extension: ms-python.python
+2024-12-19 23:47:03.070 [info] Installing extension: ms-python.vscode-pylance
+2024-12-19 23:47:03.072 [info] Installing extension: ms-python.debugpy
+2024-12-19 23:47:03.749 [info] Getting Manifest... ms-python.python
+2024-12-19 23:47:03.816 [info] Getting Manifest... ms-python.python
+2024-12-19 23:47:03.934 [info] Waiting for already requested installing extension ms-python.python ms-python.vscode-pylance
+2024-12-19 23:47:03.952 [info] Waiting for already requested installing extension ms-python.python ms-python.debugpy
+2024-12-19 23:47:06.324 [info] Extension signature verification result for ms-python.python: Success. Duration: 1224ms.
+2024-12-19 23:47:06.952 [info] Extension signature verification result for ms-python.debugpy: Success. Duration: 1246ms.
+2024-12-19 23:47:07.664 [info] Extracted extension to file:///home/rbedit7/.vscode/extensions/ms-python.debugpy-2024.14.0-linux-x64: ms-python.debugpy
+2024-12-19 23:47:07.673 [info] Renamed to /home/rbedit7/.vscode/extensions/ms-python.debugpy-2024.14.0-linux-x64
+2024-12-19 23:47:07.676 [error] [/home/rbedit7/.vscode/extensions/ms-python.debugpy-2024.14.0-linux-x64]: Extension is not compatible with Code 1.89.1. Extension requires: ^1.92.0.
+2024-12-19 23:47:07.677 [info] Extracting extension completed. ms-python.debugpy
+2024-12-19 23:47:07.761 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp'
+    at a.create (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30019)
+    at b (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30130)
+    at t.hb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:36600)
+    at t.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:29040)
+    at async $.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:16186)
+    at async J.sb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:104:109501)
+2024-12-19 23:47:07.828 [info] Extension signature verification result for ms-python.vscode-pylance: Success. Duration: 1640ms.
+2024-12-19 23:47:08.375 [info] Extracted extension to file:///home/rbedit7/.vscode/extensions/ms-python.python-2024.22.0-linux-x64: ms-python.python
+2024-12-19 23:47:08.385 [info] Renamed to /home/rbedit7/.vscode/extensions/ms-python.python-2024.22.0-linux-x64
+2024-12-19 23:47:08.389 [error] [/home/rbedit7/.vscode/extensions/ms-python.python-2024.22.0-linux-x64]: Extension is not compatible with Code 1.89.1. Extension requires: ^1.94.0-20240918.
+2024-12-19 23:47:08.390 [info] Extracting extension completed. ms-python.python
+2024-12-19 23:47:08.402 [info] Extension installed successfully: ms-python.python
+2024-12-19 23:47:08.403 [info] Finished waiting for already requested installing extension ms-python.python ms-python.vscode-pylance
+2024-12-19 23:47:08.403 [info] Finished waiting for already requested installing extension ms-python.python ms-python.debugpy
+2024-12-19 23:47:08.404 [info] Extension installed successfully: ms-python.debugpy
+2024-12-19 23:47:08.473 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp'
+    at a.create (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30019)
+    at b (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30130)
+    at t.hb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:36600)
+    at t.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:29040)
+    at async $.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:16186)
+    at async J.sb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:104:109501)
+2024-12-19 23:47:10.933 [info] Extracted extension to file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.12.1: ms-python.vscode-pylance
+2024-12-19 23:47:10.944 [info] Renamed to /home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.12.1
+2024-12-19 23:47:10.949 [error] [/home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.12.1]: Extension is not compatible with Code 1.89.1. Extension requires: ^1.91.0.
+2024-12-19 23:47:10.950 [info] Extracting extension completed. ms-python.vscode-pylance
+2024-12-19 23:47:10.968 [info] Extension installed successfully: ms-python.vscode-pylance
+2024-12-19 23:47:11.036 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/rbedit7/.vscode/extensions/extensions.json.vsctmp'
+    at a.create (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30019)
+    at b (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:53:30130)
+    at t.hb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:36600)
+    at t.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:29040)
+    at async $.stat (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:58:16186)
+    at async J.sb (/usr/share/code/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:104:109501)

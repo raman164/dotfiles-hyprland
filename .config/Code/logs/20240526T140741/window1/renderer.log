@@ -1,0 +1,6 @@
+2024-05-26 14:07:42.830 [info] Started local extension host with pid 7058.
+2024-05-26 14:07:42.935 [error] Extension 'ms-python.debugpy' appears in product.json but enables LESS API proposals than the extension wants.
+package.json (LOSES): portsAttributes, contribIssueReporter, debugVisualization
+product.json (WINS): portsAttributes, contribIssueReporter
+2024-05-26 14:07:45.611 [info] [perf] Render performance baseline is 56ms
+2024-05-26 14:07:46.234 [error] [/home/rbedit7/.vscode/extensions/ms-python.python-2024.6.0]: Extension is not compatible with Code 1.88.1. Extension requires: ^1.89.0-20240415.

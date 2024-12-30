@@ -1,0 +1,17 @@
+2024-05-26 14:07:44.670 [info] Log level: Info
+2024-05-26 14:07:44.670 [info] Validating found git in: "git"
+2024-05-26 14:07:44.670 [info] Using git "2.45.1" from "git"
+2024-05-26 14:07:44.670 [info] > git rev-parse --show-toplevel [13ms]
+2024-05-26 14:07:44.670 [info] > git rev-parse --git-dir --git-common-dir [29ms]
+2024-05-26 14:07:44.670 [info] Open repository: /home/rbedit7
+2024-05-26 14:07:44.678 [info] > git rev-parse --show-toplevel [18ms]
+2024-05-26 14:07:44.679 [info] > git config --get commit.template [24ms]
+2024-05-26 14:07:44.699 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [6ms]
+2024-05-26 14:07:44.700 [info] > git rev-parse --show-toplevel [12ms]
+2024-05-26 14:07:44.705 [warning] ENOENT: no such file or directory, open '/home/rbedit7/.git/refs/remotes/origin/master'
+2024-05-26 14:07:44.710 [info] > git rev-parse refs/remotes/origin/master [6ms]
+2024-05-26 14:07:44.718 [info] > git rev-parse --show-toplevel [9ms]
+2024-05-26 14:07:44.728 [info] > git rev-parse --show-toplevel [2ms]
+2024-05-26 14:07:45.110 [info] > git show --textconv :python/main.py [9ms]
+2024-05-26 14:07:45.112 [info] > git ls-files --stage -- /home/rbedit7/python/main.py [3ms]
+2024-05-26 14:07:45.187 [info] > git check-ignore -v -z --stdin [1ms]

@@ -1,0 +1,43 @@
+2024-05-26 14:00:13.645 [info] (Client) Pylance async client (2024.5.1) started with python extension (2024.4.1)
+2024-05-26 14:00:14.293 [info] [Info  - 2:00:14 PM] (3497) Pylance language server 2024.5.1 (pyright version 1.1.360, commit 4bc8428d) starting
+2024-05-26 14:00:14.293 [info] [Info  - 2:00:14 PM] (3497) Server root directory: file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist
+2024-05-26 14:00:14.293 [info] [Info  - 2:00:14 PM] (3497) Starting service instance "python"
+2024-05-26 14:00:14.299 [info] [Info  - 2:00:14 PM] (3497) Auto-Indent enabled
+2024-05-26 14:00:14.359 [info] [Info  - 2:00:14 PM] (3497) Setting pythonPath for service "python": "/home/rbedit7/python/.venv/bin/python"
+2024-05-26 14:00:14.360 [info] [Info  - 2:00:14 PM] (3497) Setting environmentName for service "python": "3.12.3 (.venv venv)"
+2024-05-26 14:00:14.394 [info] [Info  - 2:00:14 PM] (3497) Assuming Python version 3.12.3.final.0
+2024-05-26 14:00:14.464 [info] [Info  - 2:00:14 PM] (3497) Found 1 source file
+2024-05-26 14:00:15.060 [info] [Info  - 2:00:15 PM] (3497) Background analysis(1) root directory: file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist
+2024-05-26 14:00:15.066 [info] [Info  - 2:00:15 PM] (3497) Background analysis(1) started
+2024-05-26 14:00:15.225 [info] [Info  - 2:00:15 PM] (3497) Indexer background runner(2) root directory: file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist (index)
+2024-05-26 14:00:15.225 [info] [Info  - 2:00:15 PM] (3497) Indexing(2) started
+2024-05-26 14:00:15.839 [info] [Info  - 2:00:15 PM] (3497) scanned(2) 12 files over 1 exec env
+2024-05-26 14:00:16.034 [info] [Info  - 2:00:16 PM] (3497) indexed(2) 3 files over 1 exec env
+2024-05-26 14:00:16.041 [info] [Info  - 2:00:16 PM] (3497) Indexing finished(2).
+2024-05-26 14:00:57.780 [info] [Info  - 2:00:57 PM] (3497) Setting pythonPath for service "python": "/home/rbedit7/python/.venv/bin/python"
+2024-05-26 14:00:57.780 [info] [Info  - 2:00:57 PM] (3497) Setting environmentName for service "python": "3.12.3 (.venv venv)"
+2024-05-26 14:00:57.843 [info] [Info  - 2:00:57 PM] (3497) Assuming Python version 3.12.3.final.0
+2024-05-26 14:00:57.913 [info] [Info  - 2:00:57 PM] (3497) Found 1 source file
+2024-05-26 14:00:58.569 [info] [Info  - 2:00:58 PM] (3497) Indexer background runner(3) root directory: file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist (index)
+2024-05-26 14:00:58.569 [info] [Info  - 2:00:58 PM] (3497) Indexing(3) started
+2024-05-26 14:00:58.752 [info] [Info  - 2:00:58 PM] (3497) scanned(3) 12 files over 1 exec env
+2024-05-26 14:00:59.049 [info] [Info  - 2:00:59 PM] (3497) indexed(3) 3 files over 1 exec env
+2024-05-26 14:00:59.141 [info] [Info  - 2:00:59 PM] (3497) Indexing finished(3).
+2024-05-26 14:01:13.383 [info] [Info  - 2:01:13 PM] (3497) Setting pythonPath for service "python": "/home/rbedit7/python/.venv/bin/python"
+2024-05-26 14:01:13.383 [info] [Info  - 2:01:13 PM] (3497) Setting environmentName for service "python": "3.12.3 (.venv venv)"
+2024-05-26 14:01:13.433 [info] [Info  - 2:01:13 PM] (3497) Assuming Python version 3.12.3.final.0
+2024-05-26 14:01:13.506 [info] [Info  - 2:01:13 PM] (3497) Found 1 source file
+2024-05-26 14:01:14.047 [info] [Info  - 2:01:14 PM] (3497) Indexer background runner(4) root directory: file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist (index)
+2024-05-26 14:01:14.047 [info] [Info  - 2:01:14 PM] (3497) Indexing(4) started
+2024-05-26 14:01:14.240 [info] [Info  - 2:01:14 PM] (3497) scanned(4) 12 files over 1 exec env
+2024-05-26 14:01:14.396 [info] [Info  - 2:01:14 PM] (3497) indexed(4) 3 files over 1 exec env
+2024-05-26 14:01:14.416 [info] [Info  - 2:01:14 PM] (3497) Indexing finished(4).
+2024-05-26 14:01:22.375 [info] [Info  - 2:01:22 PM] (3497) Setting pythonPath for service "python": "/home/rbedit7/python/.venv/bin/python"
+2024-05-26 14:01:22.376 [info] [Info  - 2:01:22 PM] (3497) Setting environmentName for service "python": "3.12.3 (.venv venv)"
+2024-05-26 14:01:22.436 [info] [Info  - 2:01:22 PM] (3497) Assuming Python version 3.12.3.final.0
+2024-05-26 14:01:22.521 [info] [Info  - 2:01:22 PM] (3497) Found 1 source file
+2024-05-26 14:01:23.151 [info] [Info  - 2:01:23 PM] (3497) Indexer background runner(5) root directory: file:///home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.5.1/dist (index)
+2024-05-26 14:01:23.152 [info] [Info  - 2:01:23 PM] (3497) Indexing(5) started
+2024-05-26 14:01:23.354 [info] [Info  - 2:01:23 PM] (3497) scanned(5) 12 files over 1 exec env
+2024-05-26 14:01:23.490 [info] [Info  - 2:01:23 PM] (3497) indexed(5) 3 files over 1 exec env
+2024-05-26 14:01:23.503 [info] [Info  - 2:01:23 PM] (3497) Indexing finished(5).

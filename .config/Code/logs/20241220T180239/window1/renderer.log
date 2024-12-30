@@ -1,0 +1,6 @@
+2024-12-20 18:02:41.145 [info] Started local extension host with pid 2344.
+2024-12-20 18:02:41.259 [error] [/home/rbedit7/.vscode/extensions/ms-python.debugpy-2024.14.0-linux-x64]: Extension is not compatible with Code 1.89.1. Extension requires: ^1.92.0.
+2024-12-20 18:02:41.260 [error] [/home/rbedit7/.vscode/extensions/ms-python.python-2024.22.0-linux-x64]: Extension is not compatible with Code 1.89.1. Extension requires: ^1.94.0-20240918.
+2024-12-20 18:02:41.264 [error] [/home/rbedit7/.vscode/extensions/ms-python.vscode-pylance-2024.12.1]: Extension is not compatible with Code 1.89.1. Extension requires: ^1.91.0.
+2024-12-20 18:02:43.917 [info] [perf] Render performance baseline is 39ms
+2024-12-20 18:03:09.078 [info] Started local extension host with pid 2420.

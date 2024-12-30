@@ -1,0 +1,15 @@
+2024-05-26 14:00:13.067 [info] Name: Python Debugger
+2024-05-26 14:00:13.067 [info] Module: debugpy
+2024-05-26 14:00:13.067 [error] sendDebugpySuccessActivationTelemetry() failed. [Error: Extension 'ms-python.debugpy' CANNOT use API proposal: debugVisualization.
+Its package.json#enabledApiProposals-property declares: portsAttributes, contribIssueReporter but NOT debugVisualization.
+ The missing proposal MUST be added and you must start in extension development mode or use the following command line switch: --enable-proposed-api ms-python.debugpy
+	at C (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:140:51400)
+	at Object.registerDebugVisualizationTreeProvider (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:162:44119)
+	at t.registerDebugger (/home/rbedit7/.vscode/extensions/ms-python.debugpy-2024.6.0-linux-x64/dist/extension.js:2:880949)
+	at e.activate (/home/rbedit7/.vscode/extensions/ms-python.debugpy-2024.6.0-linux-x64/dist/extension.js:2:1128292)
+	at W.kb (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:158:13457)
+	at W.jb (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:158:13167)
+	at /usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:158:11189
+	at async a.n (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:142:6237)
+	at async a.m (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:142:6200)
+	at async a.l (/usr/share/code/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:142:5657)]

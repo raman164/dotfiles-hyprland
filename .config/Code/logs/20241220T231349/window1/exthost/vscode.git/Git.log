@@ -1,0 +1,22 @@
+2024-12-20 23:13:52.512 [info] Log level: Info
+2024-12-20 23:13:52.513 [info] Validating found git in: "git"
+2024-12-20 23:13:52.513 [info] Using git "2.47.1" from "git"
+2024-12-20 23:13:52.513 [info] > git rev-parse --show-toplevel [5ms]
+2024-12-20 23:13:52.513 [info] > git rev-parse --git-dir --git-common-dir [3ms]
+2024-12-20 23:13:52.513 [info] Open repository: /home/rbedit7
+2024-12-20 23:13:52.516 [info] > git config --get commit.template [12ms]
+2024-12-20 23:13:52.532 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [3ms]
+2024-12-20 23:13:52.538 [warning] ENOENT: no such file or directory, open '/home/rbedit7/.git/refs/remotes/origin/master'
+2024-12-20 23:13:52.587 [info] > git rev-parse refs/remotes/origin/master [49ms]
+2024-12-20 23:13:52.851 [info] > git show --textconv :.config2/waybar/style.css [7ms]
+2024-12-20 23:13:52.855 [info] > git ls-files --stage -- /home/rbedit7/.config2/waybar/style.css [5ms]
+2024-12-20 23:13:53.105 [info] > git check-ignore -v -z --stdin [2ms]
+2024-12-20 23:14:08.112 [info] > git status -z -uall [15520ms] (cancelled)
+2024-12-20 23:14:23.667 [info] > git merge-base refs/heads/master refs/remotes/origin/master [67ms]
+2024-12-20 23:14:23.678 [info] > git rev-list --count --left-right refs/heads/master...refs/remotes/origin/master [5ms]
+2024-12-20 23:14:23.685 [info] > git config --get commit.template [19ms]
+2024-12-20 23:14:23.687 [info] > git diff --name-status -z --diff-filter=ADMR 0a88f5c8375e063c8f4d54b8a3de34e24485111b...refs/remotes/origin/master [3ms]
+2024-12-20 23:14:24.377 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [27ms]
+2024-12-20 23:14:24.383 [warning] ENOENT: no such file or directory, open '/home/rbedit7/.git/refs/remotes/origin/master'
+2024-12-20 23:14:24.391 [info] > git rev-parse refs/remotes/origin/master [8ms]
+2024-12-20 23:14:31.648 [info] > git status -z -uall [7251ms] (cancelled)

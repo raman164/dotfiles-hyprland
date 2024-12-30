@@ -1,0 +1,12 @@
+2024-05-26 14:00:11.859 [info] Started local extension host with pid 3262.
+2024-05-26 14:00:11.890 [error] Extension 'ms-python.debugpy' appears in product.json but enables LESS API proposals than the extension wants.
+package.json (LOSES): portsAttributes, contribIssueReporter, debugVisualization
+product.json (WINS): portsAttributes, contribIssueReporter
+2024-05-26 14:00:14.597 [info] [perf] Render performance baseline is 60ms
+2024-05-26 14:00:15.007 [error] [/home/rbedit7/.vscode/extensions/ms-python.python-2024.6.0]: Extension is not compatible with Code 1.88.1. Extension requires: ^1.89.0-20240415.
+2024-05-26 14:00:25.474 [error] [File Watcher (parcel)] Unexpected error: inotify_add_watch on '/home/rbedit7/.config/Code/logs/20240524T131838/window1/exthost/vscode.github' failed: No such file or directory (EUNKNOWN) (path: /home/rbedit7)
+2024-05-26 14:00:25.475 [error] [File Watcher (universal)] restarting watcher after error: inotify_add_watch on '/home/rbedit7/.config/Code/logs/20240524T131838/window1/exthost/vscode.github' failed: No such file or directory
+2024-05-26 14:00:26.295 [error] Cannot read properties of undefined (reading 'accessToken'): TypeError: Cannot read properties of undefined (reading 'accessToken')
+    at b.h (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1693:21270)
+    at b.j (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1693:22006)
+    at u.value (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1693:21027)

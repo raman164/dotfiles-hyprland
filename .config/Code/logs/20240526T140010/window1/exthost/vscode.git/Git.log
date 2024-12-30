@@ -1,0 +1,30 @@
+2024-05-26 14:00:13.333 [info] Log level: Info
+2024-05-26 14:00:13.333 [info] Validating found git in: "git"
+2024-05-26 14:00:13.333 [info] Using git "2.45.1" from "git"
+2024-05-26 14:00:13.333 [info] > git rev-parse --show-toplevel [4ms]
+2024-05-26 14:00:13.334 [info] > git rev-parse --git-dir --git-common-dir [2ms]
+2024-05-26 14:00:13.349 [info] Open repository: /home/rbedit7
+2024-05-26 14:00:13.426 [info] > git rev-parse --show-toplevel [60ms]
+2024-05-26 14:00:13.427 [info] > git config --get commit.template [67ms]
+2024-05-26 14:00:13.486 [info] > git rev-parse --show-toplevel [19ms]
+2024-05-26 14:00:13.493 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [10ms]
+2024-05-26 14:00:13.504 [warning] ENOENT: no such file or directory, open '/home/rbedit7/.git/refs/remotes/origin/master'
+2024-05-26 14:00:13.507 [info] > git rev-parse refs/remotes/origin/master [3ms]
+2024-05-26 14:00:13.732 [info] > git show --textconv :python/main.py [9ms]
+2024-05-26 14:00:13.736 [info] > git ls-files --stage -- /home/rbedit7/python/main.py [6ms]
+2024-05-26 14:00:13.931 [info] > git check-ignore -v -z --stdin [2ms]
+2024-05-26 14:00:15.716 [info] > git status -z -uall [2197ms] (cancelled)
+2024-05-26 14:00:26.028 [info] > git merge-base refs/heads/master refs/remotes/origin/master [831ms]
+2024-05-26 14:00:26.035 [info] > git config --get commit.template [7ms]
+2024-05-26 14:00:26.039 [info] > git rev-list --count --left-right refs/heads/master...refs/remotes/origin/master [5ms]
+2024-05-26 14:00:26.055 [info] > git diff --name-status -z --diff-filter=ADMR 0a88f5c8375e063c8f4d54b8a3de34e24485111b...refs/remotes/origin/master [7ms]
+2024-05-26 14:00:26.057 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [3ms]
+2024-05-26 14:00:26.064 [warning] ENOENT: no such file or directory, open '/home/rbedit7/.git/refs/remotes/origin/master'
+2024-05-26 14:00:26.066 [info] > git rev-parse refs/remotes/origin/master [2ms]
+2024-05-26 14:00:28.243 [info] > git status -z -uall [2170ms] (cancelled)
+2024-05-26 14:00:59.135 [info] > git show --textconv :python/main.py [10ms]
+2024-05-26 14:00:59.138 [info] > git ls-files --stage -- /home/rbedit7/python/main.py [3ms]
+2024-05-26 14:01:15.142 [info] > git show --textconv :python/main.py [9ms]
+2024-05-26 14:01:15.144 [info] > git ls-files --stage -- /home/rbedit7/python/main.py [4ms]
+2024-05-26 14:01:23.837 [info] > git show --textconv :python/main.py [9ms]
+2024-05-26 14:01:23.839 [info] > git ls-files --stage -- /home/rbedit7/python/main.py [4ms]
