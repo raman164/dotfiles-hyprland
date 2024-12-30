@@ -1,0 +1,11 @@
+default_city: Richmond Hill
+element_order:
+  - temperature
+  - day_max
+  - day_min
+  - wind_speed
+  - weather
+  - humidity
+  - precipitation
+  - moon_phase
+
