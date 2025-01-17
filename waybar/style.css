@@ -72,6 +72,7 @@ tooltip {
 #memory,
 #custom-spotify,
 #custom-updates,
+#custom-weather,
 
 #modbackground {
   background: #1a1b26;
@@ -205,7 +206,15 @@ tooltip {
 
 #custom-updates {
   background-color: transparent;
-  color: #fbdb14;
+  color: #ff7e36;
+  border-radius: 7px;
+  margin-right: 5px;
+  border-right: 0px;
+}
+
+#custom-weather {
+  background-color: transparent;
+  color: #f2d09d;
   border-radius: 7px;
   margin-right: 5px;
   border-right: 0px;
