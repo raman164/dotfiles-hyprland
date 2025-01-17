@@ -1,0 +1,161 @@
+{
+  "geometry-of-main_window_geometry": {
+    "frame_geometry": {
+      "height": 1033,
+      "width": 949,
+      "x": 0,
+      "y": 0
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 1033,
+      "width": 949,
+      "x": 0,
+      "y": 0
+    },
+    "maximized": true,
+    "normal_geometry": {
+      "height": 1047,
+      "width": 960,
+      "x": 0,
+      "y": 0
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAAAAAAAAAAAA7QAAAQIAAAAAAAAAAAAAAO/AAAEFgAAAAACAAAAB4AAAAAAAAAAAAAAA7QAAAQI"
+    },
+    "screen": {
+      "depth": 32,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1080,
+        "width": 1920,
+        "x": 0,
+        "y": 0
+      },
+      "index_in_screens_list": 0,
+      "manufacturer": "ST Electronics Systems Assembly Pte Ltd",
+      "model": "0xAFC9",
+      "name": "eDP-1",
+      "serial": "",
+      "size_in_logical_pixels": {
+        "height": 1080,
+        "width": 1920
+      },
+      "virtual_geometry": {
+        "height": 1080,
+        "width": 1920,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "main_window_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAAAAAAAAPwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawAAAAAA/////wAAAIoA////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAAmgD///8AAAABAAAAAAAAAAD8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAACDAP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAPIA////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAFAD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAANcA////AAADtQAABAkAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
+  },
+  "old_prefs_migrated": true,
+  "session_data": {
+    "base_font_size": 16,
+    "columns_per_screen": {
+      "landscape": 2,
+      "portrait": 0
+    },
+    "controls_footer": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "progress"
+    },
+    "controls_help_shown_count": 2,
+    "current_color_scheme": "*custome",
+    "footer": {
+      "left": "menu-icon-on-hover",
+      "middle": "empty",
+      "right": "progress"
+    },
+    "header": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "menu-icon-on-hover"
+    },
+    "highlight_style": {
+      "kind": "color",
+      "type": "builtin",
+      "which": "green"
+    },
+    "keyboard_shortcuts": {},
+    "left-margin": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "empty"
+    },
+    "margin_left": 20,
+    "margin_right": 20,
+    "read_mode": "paged",
+    "right-margin": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "empty"
+    },
+    "standalone_font_settings": {},
+    "standalone_misc_settings": {
+      "remember_last_read": true,
+      "remember_window_geometry": false,
+      "save_annotations_in_ebook": true,
+      "singleinstance": false
+    },
+    "standalone_recently_opened": [
+      {
+        "authors": [
+          "David R. Hawkins"
+        ],
+        "key": "/home/rbedit7/books/David R. Hawkins - Power vs. Force-Hay House, Inc. (2014).epub",
+        "pathtoebook": "/home/rbedit7/books/David R. Hawkins - Power vs. Force-Hay House, Inc. (2014).epub",
+        "timestamp": "2025-01-09T02:59:40.089Z",
+        "title": "Power vs. Force"
+      },
+      {
+        "authors": [
+          "Jeffrey Gitomer"
+        ],
+        "key": "/home/rbedit7/books/Get Sh_t Done - Jeffrey Gitomer.epub",
+        "pathtoebook": "/home/rbedit7/books/Get Sh_t Done - Jeffrey Gitomer.epub",
+        "timestamp": "2025-01-09T02:54:38.593Z",
+        "title": "Get Sh*t Done"
+      },
+      {
+        "authors": [
+          "Eric Matthes"
+        ],
+        "key": "/home/rbedit7/books/Python Crash Course, 3rd Edition-No Starch Press (2023).epub",
+        "pathtoebook": "/home/rbedit7/books/Python Crash Course, 3rd Edition-No Starch Press (2023).epub",
+        "timestamp": "2025-01-06T03:18:18.395Z",
+        "title": "Python Crash Course, 3rd Edition"
+      },
+      {
+        "authors": [
+          "Jeffrey Gitomer"
+        ],
+        "key": "/home/rbedit7/Calibre Library/Jeffrey Gitomer/Get Sh_t Done (2)/Get Sh_t Done - Jeffrey Gitomer.epub",
+        "pathtoebook": "/home/rbedit7/Calibre Library/Jeffrey Gitomer/Get Sh_t Done (2)/Get Sh_t Done - Jeffrey Gitomer.epub",
+        "timestamp": "2024-12-25T03:54:10.976Z",
+        "title": "Get Sh*t Done"
+      }
+    ],
+    "user_color_schemes": {
+      "*custome": {
+        "background": "#282828",
+        "foreground": "#dec39f",
+        "link": "#b9e1ee",
+        "name": "custome"
+      },
+      "*gruvbox": {
+        "background": "#282828",
+        "foreground": "#fbf1c7",
+        "is_dark_theme": true,
+        "link": "#7ec16e",
+        "name": "gruvbox"
+      }
+    }
+  }
+}

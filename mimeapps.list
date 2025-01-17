@@ -1,0 +1,11 @@
+[Added Associations]
+text/css=code.desktop;
+text/markdown=org.pwmt.zathura.desktop;
+application/x-shellscript=code.desktop;
+application/epub+zip=calibre-ebook-viewer.desktop;calibre-ebook-edit.desktop;org.pwmt.zathura.desktop;calibre-gui.desktop;
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
+text/plain=code.desktop;
+
+[Default Applications]
+application/epub+zip=calibre-gui.desktop
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop

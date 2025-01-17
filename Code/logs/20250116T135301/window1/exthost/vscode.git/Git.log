@@ -1,0 +1,19 @@
+2025-01-16 13:53:02.511 [info] Log level: Info
+2025-01-16 13:53:02.511 [info] Validating found git in: "git"
+2025-01-16 13:53:02.511 [info] Using git "2.48.1" from "git"
+2025-01-16 13:53:02.511 [info] > git rev-parse --show-toplevel [1ms]
+2025-01-16 13:53:02.511 [info] > git rev-parse --git-dir --git-common-dir [2ms]
+2025-01-16 13:53:02.511 [info] Open repository: /home/rbedit7/.config
+2025-01-16 13:53:02.511 [info] > git config --get commit.template [8ms]
+2025-01-16 13:53:02.511 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [3ms]
+2025-01-16 13:53:02.511 [info] > git status -z -uall [46ms]
+2025-01-16 13:53:02.520 [info] > git config --get commit.template [4ms]
+2025-01-16 13:53:02.525 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [2ms]
+2025-01-16 13:53:02.567 [info] > git status -z -uall [39ms]
+2025-01-16 13:53:02.853 [info] > git check-ignore -v -z --stdin [2ms]
+2025-01-16 13:53:02.918 [info] > git show --textconv :waybar/config [5ms]
+2025-01-16 13:53:02.919 [info] > git ls-files --stage -- /home/rbedit7/.config/waybar/config [2ms]
+2025-01-16 13:53:02.924 [info] > git cat-file -s 6e7f1d850c7ea9c3630bb1e5bb541f84bbe3e3ec [1ms]
+2025-01-16 13:53:06.221 [info] > git config --get commit.template [5ms]
+2025-01-16 13:53:06.222 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [2ms]
+2025-01-16 13:53:06.274 [info] > git status -z -uall [48ms]

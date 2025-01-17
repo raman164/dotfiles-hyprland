@@ -1,0 +1,5 @@
+2025-01-16 14:26:34.234 [info] update#setState idle
+2025-01-16 14:27:02.550 [info] Extension host with pid 2313 exited with code: 0, signal: unknown.
+2025-01-16 14:27:04.236 [info] update#setState checking for updates
+2025-01-16 14:27:04.243 [info] update#setState available for download
+2025-01-16 14:27:29.465 [info] Extension host with pid 2501 exited with code: 0, signal: unknown.
