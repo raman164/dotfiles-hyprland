@@ -132,15 +132,15 @@
     },
 
     "custom/weather": {
-	    "format": "{}",
-	    "format-alt": "{alt}: {}",
-	    "format-alt-click": "click-right",
-	    "interval": 600,
-	    "tooltip-format": "Richmond Hill",
-	    "exec": "curl -s 'https://wttr.in/Richmond+Hill?format=1' | tr -s ' '",
-	    "exec-if": "ping wttr.in -c1"
+    "format": "{}",
+    "format-alt": "{alt}: {}",
+    "format-alt-click": "click-right",
+    "interval": 600,
+    "tooltip-format": "Richmond Hill",
+    "exec": "curl -s 'https://wttr.in/Richmond+Hill?format=1' | tr -s ' '",
+    "exec-if": "bash -c 'sleep 10; ping wttr.in -c1'"
     },
-    
+
     "custom/updates": {
 	    "format": "{} {icon}",
 	    "return-type": "json",
@@ -151,7 +151,7 @@
 	    "exec-if": "which waybar-module-pacman-updates",
 	    "exec": "waybar-module-pacman-updates --no-zero-output --interval-seconds 5 --network-interval-seconds 300 --no-zero-output --tooltip-align-columns 'Source Code Pro'",
 	    "on-click": "foot -e 'paru'; pkill -SIGRTMIN+8 waybar",
-    },  
+    },
      
     "mpd": {
       "format": "{stateIcon} {artist} - {title}",
