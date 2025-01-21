@@ -23,6 +23,16 @@ makepkg -si
 cd ..
 rm -rf paru-bin
 
+# Clone yay from AUR and install it
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd ..
+rm -rf yay
+
+# Install additional packages via yay
+yay -S waybar-module-pacman-updates-git
+
 # Install additional packages via paru
 paru -S yambar caido-cli burpsuite zen-browser-bin xcp virtualfish waydroid \
 	python-pyclip subfinder httpx
