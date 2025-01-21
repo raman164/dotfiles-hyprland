@@ -1,4 +1,4 @@
-## Arch Based | Hyprland Dotfiles
+### Arch Based | Hyprland Dotfiles
 <br>
 Beautifully riced in a blue color theme.
 <br>
