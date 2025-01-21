@@ -1,6 +1,6 @@
 ## Arch Based | Hyprland Dotfiles
 <br>
-Beautifully riced in a blue color
+Beautifully riced in a blue color theme.
 <br>
  - Fonts: Iosevka
 <br>
