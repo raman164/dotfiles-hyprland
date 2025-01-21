@@ -8,5 +8,5 @@ Beautifully riced in a blue color
 To install, run the following command:
 
 ```bash
-bash <(curl -s https://github.com/raman164/dotfiles-hyprland/blob/main/install.sh)
+curl https://raw.githubusercontent.com/raman164/dotfiles-hyprland/main/install.sh | bash
 
