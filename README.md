@@ -4,6 +4,7 @@ Beautifully riced in a blue color
 <br>
  - Fonts: Iosevka
 <br>
+<br>
 To install, run the following command:
 
 ```bash
