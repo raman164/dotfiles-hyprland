@@ -29,7 +29,7 @@ paru -S yambar caido-cli burpsuite zen-browser-bin xcp virtualfish waydroid \
 
 # Clone dotfiles repository and set up .zshrc
 rm -rf ~/.config
-git clone -b hyprland https://github.com/raman164/dotfiles-hyprland.git ~/.config
+git clone -b main https://github.com/raman164/dotfiles-hyprland.git ~/.config
 
 # Add current user to necessary groups
 sudo usermod -aG kvm,video,libvirt,docker,network,input $(whoami)
