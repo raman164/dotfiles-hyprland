@@ -4,5 +4,5 @@ Beautifully riced in a blue color
 <br>
  - Fonts: Iosevka
 <br>
-`curl -s https://github.com/raman164/blob/main/install.sh | bash`
+curl -s [https://github.com/raman164/blob/main/install.sh](https://github.com/raman164/blob/main/install.sh) | bash
 
