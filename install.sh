@@ -1,4 +1,6 @@
-# Install packages via Pacman
+#!/usr/bin/env bash
+
+
 sudo pacman -S sway wlroots git base-devel python python-pip make \
     cargo python-virtualenv pipewire wf-recorder swaybg neovim vim sudo foot \
     dunst libnotify wofi zsh fish starship obs-studio xdg-desktop-portal-wlr \
