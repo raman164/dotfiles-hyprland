@@ -14,7 +14,7 @@ sudo pacman -S wlroots git base-devel python python-pip make \
     tldr locate go python-pipx glow ltrace cutter radare2 rz-ghidra r2ghidra \
     libvirt qemu-full qemu-img virt-install virt-manager virt-viewer man \
 		edk2-ovmf dnsmasq swtpm guestfs-tools libosinfo tuned go adwaita-icon-theme \
-		lzip
+		lzip bat eza firefox sddm pamixer zsh-autosuggestions waybar thunar
 
 # Clone paru-bin from AUR and install it
 git clone https://aur.archlinux.org/paru-bin.git
@@ -35,7 +35,7 @@ cd ..
 rm -rf yay
 
 # Install additional packages via yay
-yay -S waybar-module-pacman-updates-git ueberzupp xarchiver
+yay -S waybar-module-pacman-updates-git ueberzugpp xarchiver gvfs checkupdates-with-aur
 
 # Clone dotfiles repository and set up .zshrc
 rm -rf ~/.config
