@@ -143,7 +143,11 @@ export PATH=$PATH:/home/rbedit7/.spicetify
 # loading starship
 
 eval "$(starship init zsh)"
-pfetch
+# pfetch
+./weather.sh
+
+
+
 
 
 
