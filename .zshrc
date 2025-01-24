@@ -49,6 +49,9 @@ alias rw='richweather'
 
 
 PATH=$PATH:/home/bin/
+
+export PATH="$PATH:${$(find ~/.local/bin -maxdepth 1 -type d -printf %p:)%%:}"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -148,7 +151,7 @@ eval "$(starship init zsh)"
 
 
 
-
+PROMPT_EOL_MARK=''
 
 
 
