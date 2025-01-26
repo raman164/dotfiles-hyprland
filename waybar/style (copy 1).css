@@ -23,6 +23,7 @@ tooltip {
 
 #workspaces button {
   padding: 5px;
+  /* color: #313244; */
   color: #939498;
   margin-right: 5px;
   /* margin-left: 10px; */
@@ -31,11 +32,6 @@ tooltip {
 #workspaces button.active {
   color: #89b4fa;
   /* background: #1a1b26; */
-  border-radius: 7px;
-  border-bottom: 3px;
-  border-style: solid;
-  border-color: #ded5cb;
-  transition: 0.3s;
 }
 
 #workspaces button.focused {
@@ -79,7 +75,6 @@ tooltip {
 #custom-spotify,
 #custom-updates,
 #custom-weather,
-
 #modbackground {
   /* background: #1a1b26; */
   opacity: 1;
@@ -104,10 +99,6 @@ tooltip {
   border-left: 0px;
   border-radius: 7px 0px 0px 7px;
   border-right: 0px;
-  border-bottom: 3px;
-  border-style: solid;
-  border-color: #ded5cb;
-  transition: 0.3s;
 }
 
 #pulseaudio.microphone {
@@ -116,29 +107,17 @@ tooltip {
   border-right: 0px;
   border-radius: 0px 7px 7px 0px;
   margin-right: 5px;
-  border-bottom: 3px;
-  border-style: solid;
-  border-color: #ded5cb;
-  transition: 0.3s;
 }
 
 #cpu {
   color: #89dceb;
   border-radius: 7px 0px 0px 7px;
-  border-bottom: 3px;
-  border-style: solid;
-  border-color: #ded5cb;
-  transition: 0.3s;
 }
 
 #memory {
   color: #94e2d5;
   border-radius: 0px 7px 7px 0px;
   margin-right: 5px;
-  border-bottom: 3px;
-  border-style: solid;
-  border-color: #ded5cb;
-  transition: 0.3s;
 }
 
 #tray {
@@ -178,10 +157,6 @@ tooltip {
   padding-right: 0px;
   border-right: 0px;
   opacity: 1;
-  border-bottom: 3px;
-  border-style: solid;
-  border-color: #ded5cb;
-  transition: 0.3s;
 }
 
 #network {
@@ -205,10 +180,6 @@ tooltip {
   border-radius: 7px;
   margin-right: 5px;
   border-left: 0px;
-  border-bottom: 3px;
-  border-style: solid;
-  border-color: #ded5cb;
-  transition: 0.3s;
 }
 
 #custom-spotify {
@@ -240,10 +211,6 @@ tooltip {
   border-radius: 7px;
   margin-right: 5px;
   border-right: 0px;
-  border-bottom: 3px;
-  border-style: solid;
-  border-color: #ded5cb;
-  transition: 0.3s;
 }
 
 #custom-weather {
@@ -252,8 +219,4 @@ tooltip {
   border-radius: 7px;
   margin-right: 5px;
   border-right: 0px;
-  border-bottom: 3px;
-  border-style: solid;
-  border-color: #ded5cb;
-  transition: 0.3s;
 }
