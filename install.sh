@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# List of packages to install
+# List of packages to install via pacman
 packages=(
     gnu-free-fonts
     noto-fonts
     noto-fonts-cjk
-    nerd-fonts make
+    noto-fonts-emoji
+    noto-fonts-extra
+    nerd-fonts
+    ttf-iosevka-nerd
+    make
     neovim
     foot
     dunst
@@ -18,6 +22,7 @@ packages=(
     sddm
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-kde
+    xdg-desktop-portal-gtk
     playerctl
     grim
     yazi
@@ -29,18 +34,16 @@ packages=(
     xdg-utils
     imv
     mpv
-    grim
     slurp
     hyprland
     hyprlock
     hyprpaper
     hypridle
-    noto-fonts-emoji
-    noto-fonts-extra
     fzf
     tmux
     networkmanager
     qt5-imageformats
+    qt5-wayland
     ffmpegthumbs
     taglib
     kompare
@@ -49,11 +52,8 @@ packages=(
     bluez-utils
     bluetui
     blueman
-    xdg-desktop-portal-gtk
-    qt5-wayland
     jq
     tree
-    ttf-iosevka-nerd
     brightnessctl
     pavucontrol
     nwg-look
@@ -62,26 +62,24 @@ packages=(
     dolphin-plugins
     kdegraphics-thumbnailers
     libheif
-	lzip
+    lzip
     bat
     eza
     exa
     firefox
-    sddm
     pamixer
     zsh-autosuggestions
-    waybar
     thunar
     wpctl
     xdg-user-dirs
     tumbler
     python3
     polkit-kde-agent
-    fuzzel 
-    
+    fuzzel
 )
 
-# Loop through the list and install each package
+# Install packages using pacman
+echo "Installing packages via pacman..."
 for pkg in "${packages[@]}"; do
     echo "Attempting to install: $pkg"
     sudo pacman -S --needed --noconfirm "$pkg"
@@ -90,30 +88,52 @@ for pkg in "${packages[@]}"; do
     fi
 done
 
+# Install yay (AUR helper) if not already installed
+if ! command -v yay &> /dev/null; then
+    echo "Installing yay..."
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm
+    cd ..
+    rm -rf yay
+else
+    echo "yay is already installed. Skipping..."
+fi
 
-# Clone yay from AUR and install it
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-cd ..
-rm -rf yay
+# List of AUR packages to install via yay
+yay_packages=(
+    waybar-module-pacman-updates-git
+    ueberzugpp
+    xarchiver
+    gvfs
+    checkupdates-with-aur
+    waypaper
+)
 
-# Install additional packages via yay
-yay -S waybar-module-pacman-updates-git ueberzugpp xarchiver gvfs checkupdates-with-aur \
-       waypaper
+# Install AUR packages using yay
+echo "Installing AUR packages via yay..."
+for pkg in "${yay_packages[@]}"; do
+    echo "Attempting to install: $pkg"
+    yay -S --needed --noconfirm "$pkg"
+    if [ $? -ne 0 ]; then
+        echo "Package '$pkg' not found or failed to install. Skipping..."
+    fi
+done
 
-# Clone dotfiles repository and set up .zshrc
+# Set up dotfiles
+echo "Setting up dotfiles..."
+if [ ! -d ~/dotfiles-hyprland ]; then
+    echo "Cloning dotfiles repository..."
+    git clone https://github.com/your-username/dotfiles-hyprland.git ~/dotfiles-hyprland
+fi
+
 rm -rf ~/.config
-cd
-cd dotfiles-hyprland
-cp -rf * ~/.config
-cd ~/.config
-cd .config
-mv -f .zshrc weather.sh ~/.
-cd
+cp -rf ~/dotfiles-hyprland/* ~/.config
+mv -f ~/.config/.zshrc ~/.config/weather.sh ~/.
 
+# Enable sddm service
+echo "Enabling sddm service..."
 sudo systemctl enable sddm
 
 # Final message
 echo "Package & rice installation completed!"
-
