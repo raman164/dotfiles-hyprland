@@ -66,6 +66,7 @@ packages=(
     bat
     eza
     exa
+    geany
     firefox
     pamixer
     zsh-autosuggestions
@@ -108,7 +109,7 @@ yay_packages=(
     gvfs
     checkupdates-with-aur
     waypaper
-    zsh-256color
+    gtk-theme-material
 )
 
 # Install AUR packages using yay
@@ -178,6 +179,11 @@ mv -f ~/.config/.zshrc ~/.config/weather.sh ~/.
 # Enable sddm service
 echo "Enabling sddm service..."
 sudo systemctl enable sddm
+
+# Apply GTK Material Theme
+echo "Applying GTK Material Theme..."
+mkdir -p ~/.themes
+cp -r /usr/share/themes/Material* ~/.themes/ || echo "GTK Material Theme not found. Skipping..."
 
 # Final message
 echo "Package & rice installation completed!"
