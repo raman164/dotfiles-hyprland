@@ -155,7 +155,7 @@ fi
 
 # Install zsh-256color
 echo "Installing zsh-256color..."
-if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
+if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-256color ]; then
     git clone https://github.com/chrissicool/zsh-256color.git ~/.oh-my-zsh/custom/plugins/zsh-256color
 else
     echo "zsh-256color is already installed. Skipping..."
