@@ -109,7 +109,7 @@ yay_packages=(
     gvfs
     checkupdates-with-aur
     waypaper
-    gtk-theme-material
+    material-gtk-theme-git
 )
 
 # Install AUR packages using yay
