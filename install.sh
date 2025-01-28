@@ -30,6 +30,7 @@ cd
 cd dotfiles-hyprland
 cp -rf * ~/.config
 cd ~/.config
+cd .config
 mv -f .zshrc weather.sh ~/.
 cd
 
