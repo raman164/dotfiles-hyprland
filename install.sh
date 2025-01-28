@@ -108,6 +108,7 @@ yay_packages=(
     gvfs
     checkupdates-with-aur
     waypaper
+    zsh-256color
 )
 
 # Install AUR packages using yay
@@ -120,6 +121,30 @@ for pkg in "${yay_packages[@]}"; do
     fi
 done
 
+# Install Oh My Zsh
+echo "Installing Oh My Zsh..."
+if [ ! -d ~/.oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+else
+    echo "Oh My Zsh is already installed. Skipping..."
+fi
+
+# Install zsh-syntax-highlighting
+echo "Installing zsh-syntax-highlighting..."
+if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+else
+    echo "zsh-syntax-highlighting is already installed. Skipping..."
+fi
+
+# Install zsh-autosuggestions
+echo "Installing zsh-autosuggestions..."
+if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+else
+    echo "zsh-autosuggestions is already installed. Skipping..."
+fi
+
 # Set up dotfiles
 echo "Setting up dotfiles..."
 if [ ! -d ~/dotfiles-hyprland ]; then
@@ -127,7 +152,10 @@ if [ ! -d ~/dotfiles-hyprland ]; then
     git clone https://github.com/your-username/dotfiles-hyprland.git ~/dotfiles-hyprland
 fi
 
-rm -rf ~/.config
+# Copy dotfiles to ~/.config and overwrite existing files
+echo "Copying dotfiles to ~/.config..."
+sudo rm -rf ~/.config
+mkdir -p ~/.config
 cp -rf ~/dotfiles-hyprland/* ~/.config
 mv -f ~/.config/.zshrc ~/.config/weather.sh ~/.
 
