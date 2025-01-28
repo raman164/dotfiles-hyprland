@@ -145,6 +145,22 @@ else
     echo "zsh-autosuggestions is already installed. Skipping..."
 fi
 
+# Install zsh-vi-mode
+echo "Installing zsh-vi-mode..."
+if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-vi-mode ]; then
+    git clone https://github.com/jeffreytse/zsh-vi-mode.git ~/.oh-my-zsh/custom/plugins/zsh-vi-mode
+else
+    echo "zsh-vi-mode is already installed. Skipping..."
+fi
+
+# Install zsh-256color
+echo "Installing zsh-256color..."
+if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
+    git clone https://github.com/chrissicool/zsh-256color.git ~/.oh-my-zsh/custom/plugins/zsh-256color
+else
+    echo "zsh-256color is already installed. Skipping..."
+fi
+
 # Set up dotfiles
 echo "Setting up dotfiles..."
 if [ ! -d ~/dotfiles-hyprland ]; then
