@@ -166,24 +166,32 @@ fi
 echo "Setting up dotfiles..."
 if [ ! -d ~/dotfiles-hyprland ]; then
     echo "Cloning dotfiles repository..."
-    git clone https://github.com/your-username/dotfiles-hyprland.git ~/dotfiles-hyprland
+    git clone https://github.com/raman164/dotfiles-hyprland.git ~/dotfiles-hyprland
+else
+    echo "Updating dotfiles repository..."
+    cd ~/dotfiles-hyprland
+    git pull
+    cd ~
 fi
 
 # Copy dotfiles to ~/.config and overwrite existing files
 echo "Copying dotfiles to ~/.config..."
-sudo rm -rf ~/.config
 mkdir -p ~/.config
 cp -rf ~/dotfiles-hyprland/* ~/.config
-mv -f ~/.config/.zshrc ~/.config/weather.sh ~/.
 
-# Enable sddm service
-echo "Enabling sddm service..."
-sudo systemctl enable sddm
+# Move specific files to the home directory
+echo "Moving .zshrc and weather.sh to the home directory..."
+mv -f ~/.config/.zshrc ~/.config/weather.sh ~/.
 
 # Apply GTK Material Theme
 echo "Applying GTK Material Theme..."
 mkdir -p ~/.themes
 cp -r /usr/share/themes/Material* ~/.themes/ || echo "GTK Material Theme not found. Skipping..."
 
+# Enable sddm service
+echo "Enabling sddm service..."
+sudo systemctl enable sddm
+
 # Final message
 echo "Package & rice installation completed!"
+
