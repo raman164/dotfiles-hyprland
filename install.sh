@@ -183,6 +183,14 @@ cp -rf ~/dotfiles-hyprland/* ~/.config
 echo "Moving .zshrc and weather.sh to the home directory..."
 mv -f ~/.config/.zshrc ~/.config/weather.sh ~/.
 
+# Copy .zshrc to the home directory and overwrite if it exists
+echo "Copying .zshrc to the home directory..."
+cp -f ~/dotfiles-hyprland/.zshrc ~/.
+
+# Copy .local folder to the home directory and overwrite if it exists
+echo "Copying .local folder to the home directory..."
+cp -rf ~/dotfiles-hyprland/.local ~/.
+
 # Apply GTK Material Theme
 echo "Applying GTK Material Theme..."
 mkdir -p ~/.themes
