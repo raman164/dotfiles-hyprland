@@ -188,8 +188,8 @@ echo "Copying .zshrc to the home directory..."
 cp -f ~/dotfiles-hyprland/.zshrc ~/.
 
 # Copy .local folder to the home directory and overwrite if it exists
-echo "Copying .local folder to the home directory..."
-cp -rf ~/dotfiles-hyprland/.local ~/.
+# echo "Copying .local folder to the home directory..."
+# cp -rf ~/dotfiles-hyprland/.local ~/.
 
 # Apply GTK Material Theme
 echo "Applying GTK Material Theme..."
