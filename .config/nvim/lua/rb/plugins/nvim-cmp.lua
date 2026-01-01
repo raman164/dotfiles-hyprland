@@ -6,13 +6,16 @@ return {
     "hrsh7th/cmp-path", -- source for file system paths
     {
       "L3MON4D3/LuaSnip",
-      -- follow latest release.
-      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-      -- jsregexp build disabled due to build issues (it's optional anyway)
+      version = "v2.*",
+      build = "make install_jsregexp",
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+      },
     },
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
     "onsails/lspkind.nvim", -- vs-code like pictograms
+    "zbirenbaum/copilot-cmp", -- copilot source for nvim-cmp
   },
   config = function()
     local cmp = require("cmp")
@@ -46,7 +49,7 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lsp"},
         { name = "luasnip" }, -- snippets
-        { name = "copilot" }, -- copilot
+        { name = "copilot" },
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
       }),

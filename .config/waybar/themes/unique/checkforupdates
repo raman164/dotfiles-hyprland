@@ -3,7 +3,8 @@
 # Check for internet connectivity
 wget -q --spider https://www.google.com
 if [ $? -ne 0 ]; then
-    echo '{"text":"ERROR!", "tooltip":"No internet connection", "class":"error"}'
+    echo '{"text": "Error!", "tooltip":"No internet connection", "class":"error"}'
+    # echo "ERROR!"
     exit 0
 fi
 

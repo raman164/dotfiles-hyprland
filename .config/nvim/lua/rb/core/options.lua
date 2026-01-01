@@ -37,3 +37,12 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- persistent undo
+opt.undofile = true -- save undo history to file
+
+-- remove the '~' marking on th eend of the buffer
+-- opt.fillchars = {
+--   eob = " ", -- remove the '~' marking on the end of the buffer
+--   diff = "╱", -- use a different character for diff
+-- }

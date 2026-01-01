@@ -21,34 +21,42 @@ export VISUAL='nvim'
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME=""
-# Aliases
 
-alias vim='nvim'
-alias nv='nvim'
-alias vi='nvim'
-alias c='clear'
-#alias nvimdir='cd ~/.config/nvim && nvim .'
-#alias ec='emacsclient -c -a 'emacs' &'
-alias q='exit'
-#alias tmuxconf='nvim ~/.config/tmux/tmux.conf'
-alias hypr='nvim ~/.config/hypr/'
-#alias ghu='yadm add -u && yadm commit -m "update" && yadm push'
-#alias uni='yazi ~/documents/uni/'
-#alias celeste='./games/celeste-linux/Celeste'
-alias zzz='systemctl hybrid-sleep'
-#alias vault='cd ~/documents/vault'
-#alias notes='yazi notes'
-alias ls='eza -a --icons=always'
-alias ll='eza -al --icons=always'
-alias lt='eza -a --tree --level=1 --icons=always'
-alias y='yazi'
-alias wtr='curl wttr.in/Richmond+Hill'
-alias rw='richweather'
+
+
+# Aliases
+# source ~/.bash_profile
+
+# alias vim='nvim'
+# # alias nv='nvim'
+# # alias vi='nvim'
+# alias c='clear'
+# #alias nvimdir='cd ~/.config/nvim && nvim .'
+# #alias ec='emacsclient -c -a 'emacs' &'
+# alias q='exit'
+# #alias tmuxconf='nvim ~/.config/tmux/tmux.conf'
+# alias hypr='nvim ~/.config/hypr/'
+# #alias ghu='yadm add -u && yadm commit -m "update" && yadm push'
+# #alias uni='yazi ~/documents/uni/'
+# #alias celeste='./games/celeste-linux/Celeste'
+# alias zzz='systemctl hybrid-sleep'
+# #alias vault='cd ~/documents/vault'
+# #alias notes='yazi notes'
+# alias ls='eza -a --icons=always'
+# alias ll='eza -al --icons=always'
+# alias lt='eza -a --tree --level=1 --icons=always'
+# alias y='yazi'
+# alias wtr='curl wttr.in/Richmond+Hill'
+# alias rw='richweather'
+#
 
 
 
 
 PATH=$PATH:/home/bin/
+
+export PATH="$PATH:${$(find ~/.local/bin -maxdepth 1 -type d -printf %p:)%%:}"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -143,32 +151,167 @@ export PATH=$PATH:/home/rbedit7/.spicetify
 # loading starship
 
 eval "$(starship init zsh)"
-pfetch
-#alias this=some command
-#function rr {
+# pfetch
+# ./weather.sh
+# ./daily-motivation.sh
+
+
+
+PROMPT_EOL_MARK=''
+
+ 
+
+# alias this='some command'
+# function rr {
 #    sudo !!
-#}
+# }
 
-
-
-if command -v lsd > /dev/null; then
-  alias vim='nvim'
-  alias nv='nvim'
-#alias nvimdir='cd ~/.config/nvim && nvim .'
-#alias ec='emacsclient -c -a 'emacs' &'
-#alias q='exit'
-#alias tmuxconf='nvim ~/.config/tmux/tmux.conf'
-  alias hypr='nvim ~/.config/hypr/'
-#alias ghu='yadm add -u && yadm commit -m "update" && yadm push'
-#alias uni='yazi ~/documents/uni/'
-#alias celeste='./games/celeste-linux/Celeste'
-  alias zzz='systemctl hybrid-sleep'
-#alias vault='cd ~/documents/vault'
-#alias notes='yazi notes'
-  alias ls='eza -a --icons=always'
-  alias ll='eza -al --icons=always'
-  alias lt='eza -a --tree --level=1 --icons=always'
-fi
+#
+#
+# if command -v lsd > /dev/null; then
+#   # alias vim='nvim'
+#   # alias nv='nvim'
+# #alias nvimdir='cd ~/.config/nvim && nvim .'
+# #alias ec='emacsclient -c -a 'emacs' &'
+# #alias q='exit'
+# #alias tmuxconf='nvim ~/.config/tmux/tmux.conf'
+#   # alias hypr='nvim ~/.config/hypr/'
+# #alias ghu='yadm add -u && yadm commit -m "update" && yadm push'
+# #alias uni='yazi ~/documents/uni/'
+# #alias celeste='./games/celeste-linux/Celeste'
+#   # alias zzz='systemctl hybrid-sleep'
+# #alias vault='cd ~/documents/vault'
+# #alias notes='yazi notes'
+#   alias ls='eza -a --icons'
+#   alias ll='eza -al --icons=always'
+#   alias lt='eza -a --tree --level=1 --icons=always'
+# fi
 
 # Created by `pipx` on 2024-12-30 18:15:22
 export PATH="$PATH:/home/rbedit7/.local/bin"
+
+
+# Aliases
+# source ~/.bash_profile
+
+alias vim='nvim'
+alias nv='nvim'
+alias vi='nvim'
+alias c='clear'
+#alias nvimdir='cd ~/.config/nvim && nvim .'
+#alias ec='emacsclient -c -a 'emacs' &'
+alias q='exit'
+#alias tmuxconf='nvim ~/.config/tmux/tmux.conf'
+alias hypr='nvim ~/.config/hypr/'
+#alias ghu='yadm add -u && yadm commit -m "update" && yadm push'
+#alias uni='yazi ~/documents/uni/'
+#alias celeste='./games/celeste-linux/Celeste'
+alias zzz='systemctl hybrid-sleep'
+#alias vault='cd ~/documents/vault'
+#alias notes='yazi notes'
+alias ls='eza -a --icons=always'
+alias ll='eza -al --icons=always'
+alias lt='eza -a --tree --level=1 --icons=always'
+alias y='yazi'
+alias wtr='curl wttr.in/Richmond+Hill'
+alias rw='richweather'
+alias nvc='cd $HOME/.config/nvim && vim'
+alias lta='eza -lTag --level=4 --icons=always'
+
+
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/rbedit7/.dart-cli-completion/zsh-config.zsh ]] && . /home/rbedit7/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+
+
+# ===== LEARNING HELPER FUNCTIONS =====
+
+# Export last N commands to markdown file
+# Usage: export-cmds [count] [file]
+# Example: export-cmds 20 lpic1-notes.md
+export-cmds() {
+    local count=${1:-10}
+    local file=${2:-~/Documents/learning/commands.md}
+
+    # Create directory if it doesn't exist
+    mkdir -p "$(dirname "$file")"
+
+    echo '```bash' >> "$file"
+    fc -ln -$count | sed 's/^[ \t]*//' >> "$file"
+    echo '```' >> "$file"
+    echo "" >> "$file"
+    echo "✓ Last $count commands exported to $file"
+}
+
+# Quick note function - add a comment/note to your markdown file
+# Usage: note "your note here" [file]
+# Example: note "This command creates a user" lpic1-notes.md
+note() {
+    local text="$1"
+    local file=${2:-~/Documents/learning/commands.md}
+
+    mkdir -p "$(dirname "$file")"
+
+    echo "**Note:** $text" >> "$file"
+    echo "" >> "$file"
+    echo "✓ Note added to $file"
+}
+
+# Start a new section in your notes
+# Usage: section "Section Name" [file]
+# Example: section "User Management" lpic1-notes.md
+section() {
+    local title="$1"
+    local file=${2:-~/Documents/learning/commands.md}
+
+    mkdir -p "$(dirname "$file")"
+
+    echo "---" >> "$file"
+    echo "" >> "$file"
+    echo "## $title" >> "$file"
+    echo "" >> "$file"
+    echo "✓ New section '$title' added to $file"
+}
+
+# ===== EASY SHORTCUTS FOR LPIC-1 & AWS =====
+
+# LPIC-1 101 shortcuts
+alias lpic1='nvim ~/Documents/learning/lpic1-101/lpic1-101-notes.md'
+lpic1-save() {
+    export-cmds ${1:-10} ~/Documents/learning/lpic1-101/lpic1-101-notes.md
+}
+lpic1-note() {
+    note "$1" ~/Documents/learning/lpic1-101/lpic1-101-notes.md
+}
+lpic1-section() {
+    section "$1" ~/Documents/learning/lpic1-101/lpic1-101-notes.md
+}
+
+# LPIC-1 102 shortcuts
+alias lpic2='nvim ~/Documents/learning/lpic1-102/lpic1-102-notes.md'
+lpic2-save() {
+    export-cmds ${1:-10} ~/Documents/learning/lpic1-102/lpic1-102-notes.md
+}
+lpic2-note() {
+    note "$1" ~/Documents/learning/lpic1-102/lpic1-102-notes.md
+}
+lpic2-section() {
+    section "$1" ~/Documents/learning/lpic1-102/lpic1-102-notes.md
+}
+
+# AWS CloudOps shortcuts
+alias aws-cop='nvim ~/Documents/learning/aws-cloudops/notes.md'
+aws-save() {
+    export-cmds ${1:-10} ~/Documents/learning/aws-cloudops/notes.md
+}
+aws-note() {
+    note "$1" ~/Documents/learning/aws-cloudops/notes.md
+}
+aws-section() {
+    section "$1" ~/Documents/learning/aws-cloudops/notes.md
+}
+
+

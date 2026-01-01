@@ -1,75 +1,120 @@
 * {
-    border-radius: 5px;
-    font-family: "Iosevka Nerd Font";
+  border-radius: 5px;
+  font-family: "Iosevka Nerd Font";
+  color: #c0caf5;
+}
+
+*::selection {
+  background-color: transparent !important;
+  color: #c0caf5 !important;
+}
+
+*:selected {
+  background-color: #12121e !important;
+  color: #c0caf5 !important;
 }
 
 window {
-    font-size: 14px;
-    opacity: 1.0;
-    border-radius: 5px;
-    border: 2px solid rgba(122, 162, 247, 0.67);
-    background-color: #1A1B26;
+  font-size: 14px;
+  opacity: 1;
+  border-radius: 8px;
+  border: 1px solid rgba(122, 162, 247, 0.67);
+  background-color: rgba(26, 27, 38, 0.95);
 }
 
 image {
-    margin-left: .25em;
-    margin-right: .25em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
 }
 
 #input {
-    background: #1A1B26;
-    border-radius: 5px;
-    border: 1px solid #7aa2f7aa;
-    outline: none;
-    box-shadow: none;
+  background: rgba(26, 27, 38, 0.9);
+  border-radius: 5px;
+  border: 1px solid #7aa2f7aa;
+  outline: none;
+  box-shadow: none;
+  color: #c0caf5;
+  caret-color: #7aa2f7;
+}
+
+#input::selection {
+  background-color: transparent !important;
+  color: #c0caf5 !important;
 }
 
 #input:focus {
-    border: 1px solid #7aa2f7aa;
-    outline: none;
-    box-shadow: none;
+  border: 1px solid #7aa2f7aa;
+  outline: none;
+  box-shadow: none;
 }
 
 #inner-box {
-    margin: 5px;
-    border: none;
-    background-color: #1A1B26;
+  margin: 5px;
+  border: none;
+  background-color: transparent;
 }
 
 #outer-box {
-    margin: 5px;
-    border: none;
-    background-color: #1A1B26;
+  margin: 5px;
+  border: none;
+  background-color: transparent;
 }
 
 #scroll {
-    margin: 0px;
-    border: none;
+  margin: 0px;
+  border: none;
 }
 
 #text {
-    margin: 5px;
-    border: none;
+  margin: 5px;
+  border: none;
+  color: #c0caf5;
+}
+
+#text::selection {
+  background-color: transparent !important;
+  color: #c0caf5 !important;
+}
+
+label::selection {
+  background-color: transparent !important;
+  color: #c0caf5 !important;
+}
+
+#entry:selected #text {
+  color: #c0caf5;
 }
 
 #entry {
-    background-color: #1A1B26;
-    border: none;
-    outline: none;
-    box-shadow: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: #c0caf5 !important;
+}
+
+#entry::selection {
+  background-color: transparent !important;
+  color: #c0caf5 !important;
 }
 
 #entry:selected {
-    background-color: #12121e;
-    border: none;
-    outline: none;
-    box-shadow: none;
+  background-color: rgba(65, 72, 104, 0.6);
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: #c0caf5 !important;
+}
+
+#entry:selected::selection {
+  background-color: transparent !important;
+  color: #c0caf5 !important;
 }
 
 #mode-switcher button {
-    background-color: #1A1B26;
+  background-color: transparent;
 }
 
 #mode-switcher button:selected {
-    background-color: #12121e;
+  background-color: rgba(65, 72, 104, 0.6);
 }

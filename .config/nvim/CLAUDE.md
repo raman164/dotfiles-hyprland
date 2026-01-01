@@ -4,136 +4,188 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is a Neovim configuration written in Lua, using lazy.nvim as the plugin manager. The configuration is organized under the `lua/rb/` namespace with a modular structure separating core settings from plugin configurations.
+This is a Neovim configuration using lazy.nvim as the plugin manager. The configuration is organized in a modular structure under `lua/rb/` with separate directories for core settings and plugins.
+
+## Project Structure
+
+```
+~/.config/nvim/
+├── init.lua                    # Entry point: loads core and lazy
+├── lazy-lock.json              # Lock file for plugin versions
+├── lua/rb/
+│   ├── core/
+│   │   ├── init.lua           # Loads options and keymaps
+│   │   ├── options.lua        # Vim options (tabs, search, UI)
+│   │   └── keymaps.lua        # Global keybindings
+│   ├── lazy.lua               # Lazy.nvim bootstrap and setup
+│   └── plugins/               # Plugin configurations (one file per plugin)
+│       ├── init.lua           # Basic plugins (plenary, tmux-navigator)
+│       ├── lsp/               # LSP-specific plugins
+│       │   ├── mason.lua      # LSP/tool installer configuration
+│       │   └── lspconfig.lua  # LSP server configurations
+│       ├── formatting.lua     # conform.nvim config
+│       ├── linting.lua        # nvim-lint config
+│       ├── nvim-cmp.lua       # Autocompletion config
+│       ├── telescope.lua      # Fuzzy finder config
+│       └── [other plugins]    # Each plugin in its own file
+├── after/queries/             # Treesitter query overrides
+└── pack/nvim/start/           # Additional plugins installed via pack
+```
 
 ## Architecture
 
-### Entry Point Flow
-1. `init.lua` - Main entry point that loads:
-   - `lua/rb/core/` - Core Neovim settings (options, keymaps)
-   - `lua/rb/lazy.lua` - Plugin manager bootstrap
+### Plugin Management
 
-2. Plugin loading happens via lazy.nvim, which auto-imports from:
-   - `lua/rb/plugins/*.lua` - Individual plugin configurations
-   - `lua/rb/plugins/lsp/*.lua` - LSP-related configurations
+- **Plugin Manager**: lazy.nvim (auto-bootstrapped in `lua/rb/lazy.lua`)
+- **Plugin Organization**: Each plugin has its own file in `lua/rb/plugins/` or `lua/rb/plugins/lsp/`
+- **Plugin Loading**: lazy.nvim imports from `rb.plugins` and `rb.plugins.lsp` directories
+- **Lock File**: `lazy-lock.json` pins plugin versions for reproducibility
 
-### Core Structure
-- `lua/rb/core/options.lua` - Editor options (tabs=2 spaces, relative numbers, system clipboard, no swap files)
-- `lua/rb/core/keymaps.lua` - Global keymaps with `<Space>` as leader key
-- `lua/rb/core/init.lua` - Loads core modules and sets fold configuration
+### Core Configuration Flow
 
-### Plugin Organization
-Each plugin is defined in its own file under `lua/rb/plugins/` as a lazy.nvim spec. Files return a table with plugin configuration including dependencies, lazy-loading events, and setup functions.
-
-## Key Technologies
+1. `init.lua` loads `rb.core` (options + keymaps) and `rb.lazy` (plugin manager)
+2. lazy.nvim automatically loads all files in `lua/rb/plugins/` and `lua/rb/plugins/lsp/`
+3. Each plugin file returns a lazy.nvim plugin spec with configuration
 
 ### LSP Setup
-LSP configuration uses a three-layer approach:
-1. **mason.lua** - Installs LSP servers (clangd, pyright, lua_ls) and tools (prettier, stylua, black, isort, pylint, eslint_d)
-2. **lspconfig.lua** - Configures LSP servers with custom handlers for svelte, graphql, emmet_ls, and lua_ls
-3. Auto-attaches LSP keybindings when LSP client connects to buffer
 
-LSP keybindings are dynamically set via `LspAttach` autocmd in lspconfig.lua:81-68.
+The LSP configuration uses a three-layer architecture:
+
+1. **mason.nvim** (`lua/rb/plugins/lsp/mason.lua`): Installs LSP servers, formatters, and linters
+   - Configured servers: clangd, lua_ls, pyright, ts_ls, html, cssls, jsonls, bashls, gopls, rust_analyzer, yamlls
+   - Configured tools: prettier, stylua, isort, black, clang-format, ruff, eslint_d, shellcheck
+
+2. **mason-lspconfig.nvim**: Bridges mason and lspconfig, handles automatic installation
+
+3. **nvim-lspconfig** (`lua/rb/plugins/lsp/lspconfig.lua`): Configures each LSP server
+   - Sets up capabilities integration with nvim-cmp
+   - Defines server-specific settings in `server_configs` table
+   - Uses `LspAttach` autocmd to set keybindings when LSP attaches
 
 ### Formatting & Linting
-- **formatting.lua** - Uses conform.nvim with format-on-save enabled (timeout: 1000ms)
-  - JavaScript/TypeScript: prettier
+
+- **Formatting**: conform.nvim with format-on-save enabled (1s timeout)
   - Python: isort + black
+  - JS/TS/JSON/HTML/CSS: prettier
   - Lua: stylua
   - C/C++: clang-format
-- **linting.lua** - Uses nvim-lint with auto-linting on BufEnter/BufWritePost/InsertLeave
-  - JavaScript/TypeScript: eslint_d
+
+- **Linting**: nvim-lint with auto-linting on BufEnter, BufWritePost, InsertLeave
   - Python: ruff
+  - JS/TS: eslint_d
   - C/C++: cpplint
 
 ### Completion
-nvim-cmp configuration (nvim-cmp.lua:28-62) integrates:
-- LSP completions
-- LuaSnip snippets
-- GitHub Copilot (via copilot-cmp.lua)
-- Buffer text and file paths
 
-Sources priority: nvim_lsp > luasnip > copilot > buffer > path
+nvim-cmp with sources in priority order:
+1. nvim_lsp (LSP completions)
+2. luasnip (snippets)
+3. copilot (GitHub Copilot)
+4. buffer (text in current buffer)
+5. path (file paths)
 
-### Key Plugins
-- **Telescope** - Fuzzy finder with fzf-native, integrated with Trouble for quickfix
-- **Treesitter** - Syntax highlighting and text objects
-- **nvim-tree** - File explorer
-- **gitsigns** - Git integration
-- **auto-save** - Automatic file saving
-- **which-key** - Keymap popup helper
+## Key Commands & Workflows
 
-## Common Tasks
+### Plugin Management
 
-### Managing Plugins
-```lua
--- Open Lazy plugin manager
-:Lazy
--- or use keymap: <leader>l
+```vim
+:Lazy              " Open lazy.nvim UI
+:Mason             " Open Mason UI for LSP/tool management
 ```
 
-### Managing LSP/Tools
+Or use leader keymaps:
+- `<leader>l` - Open Lazy
+- `<leader>m` - Open Mason
+
+### Python Development
+
+Python uses pyright for LSP with type checking disabled (matching pyrightconfig.json). The configuration:
+- Disables type checking (`typeCheckingMode = "off"`)
+- Provides completions, go-to-definition, and refactoring
+- Uses ruff for linting (fast Python linter)
+- Uses black + isort for formatting
+
+If Python LSP isn't working, check:
+1. Pyright is installed: `:Mason` and verify pyright is installed
+2. Ruff, black, isort are installed for linting/formatting
+3. Check `:LspInfo` for active clients
+
+### C/C++ Development
+
+- LSP: clangd with background indexing and clang-tidy
+- Formatter: clang-format
+- Linter: cpplint
+- Execute: `<leader>c` compiles with g++ and runs
+
+### Running Code
+
+Quick execution keybindings in normal mode:
+- `<leader>p` - Run Python file with python3
+- `<leader>c` - Compile and run C++ file
+- `<leader>pm` - Run Python in vertical split terminal
+
+### LSP Keybindings
+
+Set when LSP attaches to buffer (see `lua/rb/plugins/lsp/lspconfig.lua:241`):
+- `gd` - Go to definition
+- `gD` - Go to declaration
+- `gr` - Go to references
+- `gi` - Go to implementation
+- `K` - Hover documentation
+- `<C-k>` - Signature help
+- `<leader>rn` - Rename symbol
+- `<leader>ca` - Code action
+- `<leader>f` - Format buffer
+- `<leader>D` - Type definition
+
+### Fuzzy Finding (Telescope)
+
+- `<leader>ff` - Find files in cwd
+- `<leader>fr` - Find recent files
+- `<leader>fs` - Live grep (search in files)
+- `<leader>fc` - Find string under cursor
+- `<leader>ft` - Find TODO comments
+
+### Formatting & Linting
+
+- `<leader>mp` - Format file or range (manual trigger)
+- `:ConformInfo` - Show available formatters for current buffer
+- `<leader>ll` - Trigger linting manually
+
+## Adding New Plugins
+
+1. Create new file in `lua/rb/plugins/[plugin-name].lua`
+2. Return lazy.nvim plugin spec:
 ```lua
--- Open Mason to manage LSP servers and formatters
-:Mason
--- or use keymap: <leader>m
-
--- In the Mason UI:
---   - Press 'i' on a package to install it
---   - Press 'X' on a package to uninstall it
---   - Press 'u' on a package to update it individually
---   - Press 'U' to update ALL installed packages
---   - Press 'g?' to see all available keybinds
-
--- To see which packages have updates available:
--- 1. Open :Mason (<leader>m)
--- 2. Navigate to an installed package
--- 3. Press <CR> (Enter) to see package details including latest version
--- 4. Press 'u' to update that package if outdated
-
--- Or update all tools at once:
-:MasonToolsUpdate
+return {
+  "author/plugin-name",
+  dependencies = { "other/plugin" },  -- optional
+  event = "BufReadPre",  -- lazy-load trigger (optional)
+  config = function()
+    -- Plugin setup code
+  end,
+}
 ```
+3. Restart Neovim - lazy.nvim will auto-install the plugin
 
-### Formatting Code
-- Auto-formats on save (configured in formatting.lua:25-29)
-- Manual format: `<leader>mp` (works in normal/visual mode)
+## Adding New LSP Servers
 
-### Linting
-- Auto-lints on buffer enter, write, and leaving insert mode
-- Manual lint: `<leader>ll`
+1. Add server name to `ensure_installed` in `lua/rb/plugins/lsp/mason.lua`
+2. Add server-specific config to `server_configs` in `lua/rb/plugins/lsp/lspconfig.lua`
+3. Add server name to `servers` list in `lspconfig.lua`
+4. Restart Neovim or run `:Lazy reload nvim-lspconfig`
 
-## Important Conventions
+## Leader Key
 
-### Code Style
-- Lua files use 4-space indentation (defined in .stylua.toml)
-- Editor default is 2-space indentation for other filetypes (options.lua:9-12)
+Leader key is set to `<Space>` in `lua/rb/core/keymaps.lua`.
 
-### Keymap Patterns
-- Leader key is `<Space>` (keymaps.lua:1)
-- All keymaps include `desc` field for which-key integration
-- Plugin-specific keymaps are defined within their respective config files
+## Special Configurations
 
-### Adding New Plugins
-1. Create new file in `lua/rb/plugins/` or `lua/rb/plugins/lsp/`
-2. Return lazy.nvim spec table with at minimum:
-   ```lua
-   return {
-     "author/plugin-name",
-     config = function()
-       -- setup code
-     end,
-   }
-   ```
-3. Lazy.nvim auto-imports files from these directories (lazy.lua:14)
-
-### LSP Server Configuration
-To add new LSP server:
-1. Add to `ensure_installed` in mason.lua:29-33
-2. Add custom handler in lspconfig.lua:81-155 only if server needs special configuration
-3. Default handler (lspconfig.lua:83-86) automatically configures servers without special needs
-
-## Running Code
-Quick keybinds for running code (keymaps.lua:42-45):
-- Python: `<leader>p` (runs in shell) or `<leader>pm` (runs in terminal split)
-- C++: `<leader>c` (compiles with g++ and runs a.out)
+- Line numbers toggle: `<leader>n` toggles between relative and absolute line numbers
+- Fold method: Uses marker-based folding (start with folds closed)
+- Clipboard: Integrated with system clipboard
+- Split windows: Open to right and below
+- No swap files
+- jk in insert mode exits to normal mode
+- Alt+j/k moves lines up/down in normal and visual modes
+- Ctrl+d duplicates current line

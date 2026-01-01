@@ -46,3 +46,12 @@ keymap.set("n", "<leader>pm", ":w <CR>:vsp | terminal python3 % <CR>i")
 
 -- quit = :q
 keymap.set("n", "<leader>q", "<cmd>q<CR>")
+
+-- Disable horizontal scroll (no-op)
+keymap.set('n', '<ScrollWheelLeft>', '<Nop>')
+keymap.set('i', '<ScrollWheelLeft>', '<Nop>')
+keymap.set('n', '<ScrollWheelRight>', '<Nop>')
+keymap.set('i', '<ScrollWheelRight>', '<Nop>')
+-- Scroll left/right slower (adjust '5' for sensitivity)
+-- keymap.set("n", "<ScrollWheelLeft>", "5zh")  -- Scroll 5 chars left
+-- keymap.set("n", "<ScrollWheelRight>", "5zl") -- Scroll 5 chars right

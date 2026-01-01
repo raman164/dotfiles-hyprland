@@ -11,7 +11,6 @@ return {
       violet = "#FF61EF",
       yellow = "#FFDA7B",
       red = "#FF4A4A",
-      pink = "#5F7A8C",
       fg = "#c3ccdc",
       bg = "#112638",
       inactive_bg = "#2c3043",
@@ -19,7 +18,7 @@ return {
 
     local my_lualine_theme = {
       normal = {
-        a = { bg = colors.pink, fg = colors.bg, gui = "bold" },
+        a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
         b = { bg = colors.bg, fg = colors.fg },
         c = { bg = colors.bg, fg = colors.fg },
       },

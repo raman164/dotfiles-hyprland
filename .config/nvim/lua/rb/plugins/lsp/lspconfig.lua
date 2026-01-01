@@ -1,223 +1,274 @@
 return {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    priority = 50,
-    dependencies = {
-        "williamboman/mason.nvim",
-        "neovim/nvim-lspconfig", -- Keep for compatibility with plugins like neodev
-        "hrsh7th/cmp-nvim-lsp",
-        { "antosha417/nvim-lsp-file-operations", config = true },
-        { "folke/neodev.nvim", opts = {} },
-    },
-    config = function()
-        -- Suppress lspconfig deprecation warning (we're using new vim.lsp.config API but keeping lspconfig for neodev compatibility)
-        local original_notify = vim.notify
-        vim.notify = function(msg, ...)
-            if type(msg) == "string" and msg:match("lspconfig.*deprecated") then
-                return
-            end
-            original_notify(msg, ...)
-        end
+  "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "williamboman/mason.nvim",
+  },
+  config = function()
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-        -- import mason_lspconfig plugin
-        local mason_lspconfig = require("mason-lspconfig")
+    -- Enhanced capabilities with nvim-cmp
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
-        -- Configure mason-lspconfig to install LSP servers
-        mason_lspconfig.setup({
-            -- list of servers for mason to install
-            ensure_installed = {
-                "clangd",
-                "pyright",
-                "lua_ls",
-            },
-            -- Automatic server setup handlers
-            handlers = {
-                -- default handler for all servers
-                function(server_name)
-                    vim.lsp.enable(server_name)
-                end,
-            },
-        })
+    -- Clangd needs special offsetEncoding
+    local clangd_capabilities = vim.tbl_deep_extend("force", capabilities, {
+      offsetEncoding = { "utf-16" },
+    })
 
-        -- import cmp-nvim-lsp plugin
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    -- Configure LSP servers using modern vim.lsp.config
+    vim.lsp.config.lua_ls = {
+      cmd = { "lua-language-server" },
+      filetypes = { "lua" },
+      root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          runtime = { version = "LuaJIT" },
+          diagnostics = { globals = { "vim" } },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("", true),
+            checkThirdParty = false,
+          },
+          telemetry = { enable = false },
+        },
+      },
+    }
 
-        local keymap = vim.keymap -- for conciseness
-
-        -- Auto show diagnostics on cursor hold
-        vim.api.nvim_create_autocmd("CursorHold", {
-            group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
-            callback = function()
-                vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
-            end,
-        })
-
-        vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-            callback = function(ev)
-                -- Buffer local mappings.
-                -- See `:help vim.lsp.*` for documentation on any of the below functions
-                local opts = { buffer = ev.buf, silent = true }
-
-                -- set keybinds
-                opts.desc = "Show LSP references"
-                keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
-
-                opts.desc = "Go to declaration"
-                keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
-
-                opts.desc = "Show LSP definitions"
-                keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
-
-                opts.desc = "Show LSP implementations"
-                keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
-
-                opts.desc = "Show LSP type definitions"
-                keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
-
-                opts.desc = "See available code actions"
-                keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
-                opts.desc = "Smart rename"
-                keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
-
-                opts.desc = "Show buffer diagnostics"
-                keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-
-                opts.desc = "Show line diagnostics"
-                keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
-
-                opts.desc = "Go to previous diagnostic"
-                keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-
-                opts.desc = "Go to next diagnostic"
-                keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
-                opts.desc = "Show documentation for what is under cursor"
-                keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
-                opts.desc = "Restart LSP"
-                keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-            end,
-        })
-
-        -- used to enable autocompletion (assign to every lsp server config)
-        local capabilities = cmp_nvim_lsp.default_capabilities()
-
-        -- Change the Diagnostic symbols in the sign column (gutter)
-        vim.diagnostic.config({
-            virtual_text = {
-                prefix = "●", -- Show error message inline with icon
-                spacing = 4,
-                severity = { min = vim.diagnostic.severity.WARN }, -- Only show WARN and ERROR inline, hide INFO/HINT
-            },
-            signs = {
-                text = {
-                    [vim.diagnostic.severity.ERROR] = " ",
-                    [vim.diagnostic.severity.WARN] = " ",
-                    [vim.diagnostic.severity.HINT] = "󰠠 ",
-                    [vim.diagnostic.severity.INFO] = " ",
-                },
-            },
-            underline = {
-                severity = { min = vim.diagnostic.severity.WARN }, -- Only underline WARN and ERROR
-            },
-            update_in_insert = false,
-            severity_sort = true,
-            float = {
-                border = "rounded",
-                source = "always", -- Show source of diagnostic
-                header = "",
-                prefix = "",
-            },
-        })
-
-        -- Configure LSP servers using the new vim.lsp.config API
-        -- Default configuration for all servers
-        local default_config = {
-            capabilities = capabilities,
+    vim.lsp.config.pyright = {
+      cmd = { "pyright-langserver", "--stdio" },
+      filetypes = { "python" },
+      root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
+      capabilities = capabilities,
+      settings = {
+        python = {
+          analysis = {
+            typeCheckingMode = "off",
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = "openFilesOnly",
+            autoImportCompletions = true,
+          }
         }
+      },
+      single_file_support = true,
+    }
 
-        -- Configure specific servers with custom settings
-        vim.lsp.config.svelte = vim.tbl_extend("force", default_config, {
-            on_attach = function(client, bufnr)
-                vim.api.nvim_create_autocmd("BufWritePost", {
-                    pattern = { "*.js", "*.ts" },
-                    buffer = bufnr,
-                    callback = function(ctx)
-                        client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-                    end,
-                })
-            end,
-        })
+    vim.lsp.config.ts_ls = {
+      cmd = { "typescript-language-server", "--stdio" },
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
+      capabilities = capabilities,
+      settings = {
+        completions = {
+          completeFunctionCalls = true
+        }
+      },
+    }
 
-        vim.lsp.config.graphql = vim.tbl_extend("force", default_config, {
-            filetypes = {
-                "graphql",
-                "gql",
-                "svelte",
-                "typescriptreact",
-                "javascriptreact",
-                "python",
-                "cpp",
-                "clangd",
-            },
-        })
+    vim.lsp.config.clangd = {
+      cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+        "--completion-style=detailed",
+        "--function-arg-placeholders",
+        "--fallback-style=llvm",
+      },
+      filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+      root_markers = { ".clangd", ".clang-tidy", ".clang-format", "compile_commands.json", "compile_flags.txt", "configure.ac", ".git" },
+      capabilities = clangd_capabilities,
+    }
 
-        vim.lsp.config.emmet_ls = vim.tbl_extend("force", default_config, {
-            filetypes = {
-                "html",
-                "typescriptreact",
-                "javascriptreact",
-                "css",
-                "sass",
-                "scss",
-                "less",
-                "svelte",
-                "python",
-                "cpp",
-                "clangd",
-            },
-        })
+    vim.lsp.config.gopls = {
+      cmd = { "gopls" },
+      filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      root_markers = { "go.work", "go.mod", ".git" },
+      capabilities = capabilities,
+      settings = {
+        gopls = {
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
+          gofumpt = true,
+        },
+      },
+    }
 
-        vim.lsp.config.lua_ls = vim.tbl_extend("force", default_config, {
-            settings = {
-                Lua = {
-                    -- make the language server recognize "vim" global
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
-                    completion = {
-                        callSnippet = "Replace",
-                    },
-                },
-            },
-        })
+    vim.lsp.config.rust_analyzer = {
+      cmd = { "rust-analyzer" },
+      filetypes = { "rust" },
+      root_markers = { "Cargo.toml", "rust-project.json" },
+      capabilities = capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = {
+            allFeatures = true,
+          },
+          checkOnSave = {
+            command = "clippy",
+          },
+        },
+      },
+    }
 
-        vim.lsp.config.pyright = vim.tbl_extend("force", default_config, {
-            settings = {
-                python = {
-                    analysis = {
-                        typeCheckingMode = "basic", -- "off", "basic", or "strict"
-                        diagnosticMode = "openFilesOnly",
-                        autoSearchPaths = true,
-                        useLibraryCodeForTypes = true,
-                        diagnosticSeverityOverrides = {
-                            reportUnusedVariable = "warning",
-                            reportUnusedImport = "none", -- Let ruff handle this
-                            reportMissingTypeStubs = "none",
-                            reportGeneralTypeIssues = "warning",
-                            reportOptionalMemberAccess = "warning",
-                        },
-                    },
-                },
-            },
-        })
+    vim.lsp.config.html = {
+      cmd = { "vscode-html-language-server", "--stdio" },
+      filetypes = { "html", "htmldjango" },
+      root_markers = { "package.json", ".git" },
+      capabilities = capabilities,
+    }
 
-        -- Set default config for servers that don't have custom configuration
-        vim.lsp.config["*"] = default_config
+    vim.lsp.config.cssls = {
+      cmd = { "vscode-css-language-server", "--stdio" },
+      filetypes = { "css", "scss", "less" },
+      root_markers = { "package.json", ".git" },
+      capabilities = capabilities,
+      settings = {
+        css = {
+          validate = true,
+          lint = {
+            unknownAtRules = "ignore",
+            unknownProperties = "ignore",
+          }
+        },
+        scss = {
+          validate = true,
+          lint = {
+            unknownAtRules = "ignore"
+          }
+        },
+        less = {
+          validate = true,
+          lint = {
+            unknownAtRules = "ignore"
+          }
+        }
+      },
+    }
 
-        -- Restore original notify function
-        vim.notify = original_notify
-    end,
+    vim.lsp.config.jsonls = {
+      cmd = { "vscode-json-language-server", "--stdio" },
+      filetypes = { "json", "jsonc" },
+      root_markers = { "package.json", ".git" },
+      capabilities = capabilities,
+      settings = {
+        json = {
+          schemas = {},
+          validate = { enable = true },
+        }
+      },
+    }
+
+    vim.lsp.config.yamlls = {
+      cmd = { "yaml-language-server", "--stdio" },
+      filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
+      root_markers = { ".git" },
+      capabilities = capabilities,
+      settings = {
+        yaml = {
+          schemas = {
+            ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          },
+        }
+      },
+    }
+
+    vim.lsp.config.bashls = {
+      cmd = { "bash-language-server", "start" },
+      filetypes = { "sh", "bash" },
+      root_markers = { ".git" },
+      capabilities = capabilities,
+    }
+
+    -- List of servers to enable
+    local servers = {
+      "lua_ls",
+      "pyright",
+      "ts_ls",
+      "clangd",
+      "gopls",
+      "rust_analyzer",
+      "html",
+      "cssls",
+      "jsonls",
+      "yamlls",
+      "bashls",
+    }
+
+    -- Enable all configured servers
+    for _, server in ipairs(servers) do
+      vim.lsp.enable(server)
+    end
+
+    -- Modern diagnostic configuration
+    vim.diagnostic.config({
+      virtual_text = {
+        prefix = "●",
+        spacing = 4,
+      },
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.HINT] = " ",
+          [vim.diagnostic.severity.INFO] = " ",
+        },
+      },
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+      float = {
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+      },
+    })
+
+    -- Disable CSS validation for GTK CSS files (waybar, wofi, etc.) but keep other LSP features
+    vim.api.nvim_create_autocmd('LspAttach', {
+      callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and client.name == 'cssls' then
+          local bufname = vim.api.nvim_buf_get_name(args.buf)
+          -- Disable validation for GTK CSS files
+          if bufname:match('/waybar/') or bufname:match('/wofi/') or bufname:match('/gtk%-3%.0/') then
+            client.server_capabilities.diagnosticProvider = false
+            vim.diagnostic.enable(false, { bufnr = args.buf })
+          end
+        end
+      end,
+    })
+
+    -- Key mappings and autocmds for LSP
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+      callback = function(ev)
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+        vim.keymap.set('n', '<leader>wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, opts)
+        vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', '<leader>f', function()
+          vim.lsp.buf.format { async = true }
+        end, opts)
+      end,
+    })
+  end
 }

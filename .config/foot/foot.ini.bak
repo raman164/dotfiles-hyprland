@@ -1,4 +1,4 @@
-include = /usr/share/foot/themes/molokai
+include = /usr/share/foot/themes/onedark
 
 [main]
 term=foot
@@ -10,10 +10,12 @@ initial-window-size-pixels=500x500
 underline-offset=2
 
 [colors]
-alpha=0.9
+alpha=0.6
 
 [key-bindings]
 clipboard-paste=Control+v
 fullscreen=F11
+
+
 
 

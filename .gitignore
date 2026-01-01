@@ -1,0 +1,174 @@
+# Cache directories
+.cache/
+.cargo/
+.npm/
+.rustup/
+.dotnet/
+
+# VS Code cache and temporary files
+.config/Code/Cache/
+.config/Code/CachedData/
+.config/Code/CachedExtensionVSIXs/
+.config/Code/CachedProfilesData/
+.config/Code/GPUCache/
+.config/Code/DawnCache/
+.config/Code/Crashpad/
+.config/Code/.org.chromium.Chromium.*
+.config/Code/logs/
+.config/Code/User/History/
+.config/Code/User/workspaceStorage/
+.config/Code/User/globalStorage/state.vscdb
+.config/Code/User/globalStorage/storage.json
+.config/Code/Service Worker/
+.config/Code/Local Storage/
+.config/Code/code.lock
+
+# Chromium cache and session files
+.config/chromium/*/Cache/
+.config/chromium/*/GPUCache/
+.config/chromium/*/DawnCache/
+.config/chromium/*/DawnGraphiteCache/
+.config/chromium/*/DawnWebGPUCache/
+.config/chromium/*/Sessions/
+.config/chromium/*/Session Storage/
+.config/chromium/*/Local Storage/
+.config/chromium/*/Cookies
+.config/chromium/*/History
+.config/chromium/*/Login Data*
+.config/chromium/*/Web Data
+.config/chromium/*/Favicons
+.config/chromium/*/Top Sites
+.config/chromium/*/Affiliation Database
+.config/chromium/*/Network Action Predictor
+.config/chromium/*/Network Persistent State
+.config/chromium/*/Preferences
+.config/chromium/*/Reporting and NEL
+.config/chromium/*/TransportSecurity
+.config/chromium/*/trusted_vault.pb
+.config/chromium/*/BrowsingTopicsState
+.config/chromium/*/DIPS*
+.config/chromium/*/IndexedDB/
+.config/chromium/*/VideoDecodeStats/
+.config/chromium/*/discount_infos_db/
+.config/chromium/*/ServerCertificate*
+.config/chromium/*/MediaDeviceSalts*
+.config/chromium/GrShaderCache/
+.config/chromium/GraphiteDawnCache/
+.config/chromium/ShaderCache/
+.config/chromium/component_crx_cache/
+.config/chromium/extensions_crx_cache/
+.config/chromium/CertificateRevocation/
+.config/chromium/PrivacySandboxAttestationsPreloaded/
+.config/chromium/Subresource Filter/
+.config/chromium/FileTypePolicies/
+.config/chromium/OnDeviceHeadSuggestModel/
+.config/chromium/OpenCookieDatabase/
+.config/chromium/Safe Browsing/
+.config/chromium/TrustTokenKeyCommitments/
+.config/chromium/AmountExtractionHeuristicRegexes/
+.config/chromium/CookieReadinessList/
+.config/chromium/first_party_sets.db*
+.config/chromium/segmentation_platform/
+
+# Shared proto database
+.config/chromium/*/shared_proto_db/
+.config/chromium/*/Extension Rules/
+.config/chromium/*/Extension Scripts/
+.config/chromium/*/Extension State/
+.config/chromium/*/GCM Store/
+.config/chromium/*/Site Characteristics Database/
+.config/chromium/*/Sync Data/
+.config/chromium/*/WebStorage/
+.config/chromium/*/Shared Dictionary/
+.config/chromium/*/commerce_subscription_db/
+.config/chromium/*/discounts_db/
+.config/chromium/*/parcel_tracking_db/
+.config/chromium/*/chrome_cart_db/
+.config/chromium/*/Segmentation Platform/
+.config/chromium/*/coupon_db/
+.config/chromium/*/PersistentOriginTrials/
+.config/chromium/*/Download Service/
+.config/chromium/*/AutofillAiModelCache/
+.config/chromium/*/BookmarkMergedSurfaceOrdering
+.config/chromium/*/Bookmarks
+.config/chromium/Last Version
+.config/chromium/Local State
+
+# Personal and sensitive
+.ssh/
+.pki/
+.mozilla/
+.thunderbird/
+.wakatime*
+.bash_history
+.wget-hsts
+.viminfo
+.claude.json
+.claude.json.backup
+.claude/
+
+# OneDrive and documents (if sensitive)
+OneDrive/
+Documents/
+Downloads/
+books/
+"Calibre Library/"
+
+# Other apps
+.config/calibre/
+.config/pdfarranger/
+.config/waypaper/
+.config/xournalpp/
+.config/okular*
+.config/dconf/user
+.config/go/
+
+# Binary and build artifacts
+a.out
+*.o
+*.so
+*.a
+
+# Oh-my-zsh
+.oh-my-zsh/
+.config/.oh-my-zsh/
+
+# Zsh
+.zcompdump*
+.zsh_history
+.zprofile
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Project specific
+.config2/
+"git extra folder/"
+cwalk/
+dronevil/
+go/
+c++/
+alacritty/
+checksums.txt
+daily-motivation.sh
+hyprdynami
+01-battery-optimization.conf
+
+# GitHub config
+.gitconfig
+
+# Local icon cache
+.icons/
+.local/
+
+# VSCode workspace
+.vscode/
+
+# BTTop
+.config/btop/
+
+# Misc
+.gtkrc-2.0
+Pictures/

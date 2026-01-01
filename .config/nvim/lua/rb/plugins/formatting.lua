@@ -20,8 +20,8 @@ return {
                 liquid = { "prettier" },
                 lua = { "stylua" },
                 python = { "isort", "black" },
-                c = { "clang-format" },
                 cpp = { "clang-format" },
+                c = { "clang-format" },
             },
             format_on_save = {
                 lsp_fallback = true,
@@ -34,8 +34,20 @@ return {
             conform.format({
                 lsp_fallback = true,
                 async = false,
-                timeout_ms = 3000,
+                timeout_ms = 1000,
             })
         end, { desc = "Format file or range (in visual mode)" })
+
+        -- Add command to check available formatters
+        vim.api.nvim_create_user_command("ConformInfo", function()
+            local ft = vim.bo.filetype
+            local formatters = conform.list_formatters(0)
+            if #formatters == 0 then
+                vim.notify("No formatters available for filetype: " .. ft, vim.log.levels.WARN)
+            else
+                local names = vim.tbl_map(function(f) return f.name end, formatters)
+                vim.notify("Available formatters for " .. ft .. ": " .. table.concat(names, ", "))
+            end
+        end, { desc = "Show available formatters for current buffer" })
     end,
 }
