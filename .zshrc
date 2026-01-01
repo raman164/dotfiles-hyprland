@@ -315,3 +315,10 @@ aws-section() {
 }
 
 
+
+# Snapper Backup System Aliases
+alias snap-create='sudo snapper -c home create -d'
+alias snap-list='sudo snapper -c home list'
+alias snap-restore='~/restore-from-snapshot.sh'
+alias snap-diff='sudo snapper -c home diff'
+alias snap-before='sudo snapper -c home create -d "Before risky operation - $(date +%Y-%m-%d_%H:%M)"'
