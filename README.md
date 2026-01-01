@@ -1,5 +1,10 @@
 ## my arch linux dotfiles
 
+## Screenshots
+
+![Desktop Showcase](screenshots/desktop-showcase.png)
+
+![Desktop Full](screenshots/desktop-full.png)
 
 ### my choice of software:
 distro: `arch` \
