@@ -172,3 +172,10 @@ hyprdynami
 # Misc
 .gtkrc-2.0
 Pictures/
+
+# Backup system documentation (keep private)
+BACKUP-GUIDE.md
+BACKUP-SETUP-COMPLETE.md
+WHAT-WENT-WRONG.md
+setup-backup-system.sh
+restore-from-snapshot.sh
