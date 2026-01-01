@@ -10,12 +10,10 @@ initial-window-size-pixels=500x500
 underline-offset=2
 
 [colors]
-alpha=0.6
+alpha=0.9
 
 [key-bindings]
 clipboard-paste=Control+v
 fullscreen=F11
-
-
 
 
