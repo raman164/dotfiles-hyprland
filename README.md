@@ -48,8 +48,11 @@ Tiled workspace — neovim beside a shell:
 ├── foot/              # terminal
 ├── yazi/              # file manager + catppuccin-mocha flavor
 ├── fastfetch/         # fetch config, ascii logos
+├── rofi/              # colour palettes (themes/) + active-theme pointer
+├── wlogout/           # colour palettes (colors/) + active-theme pointer
 └── ...                # wofi, fuzzel, dunst, btop, tmux, zathura, gtk, qt
 .zshrc                 # zsh + starship, aliases, note-taking helpers
+pkglist.txt            # explicitly installed packages, repo + AUR split
 ```
 
 ## Notable keybinds
@@ -81,6 +84,18 @@ cd dotfiles-hyprland
 # copy the pieces you want into ~/.config/
 cp -r .config/hypr ~/.config/
 ```
+
+Packages are listed in `pkglist.txt` (repo and AUR sections separated):
+
+```sh
+pacman -S --needed - < <(awk '{print $1}' pkglist.txt | grep -v '^#')
+```
+
+Note: `rofi/` and `wlogout/` here are colour palettes only. The Hyprdots-style
+scripts in `hypr/scripts/` (`rofilaunch.sh`, `logoutlaunch.sh`) expect a fuller
+layout — `rofi/config.rasi`, `rofi/styles/`, `wlogout/layout` — which is not
+included; those scripts are only wired up from the inactive `bizare-*` waybar
+themes.
 
 ## Notes
 

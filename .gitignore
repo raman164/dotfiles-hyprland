@@ -12,6 +12,7 @@
 !/.gitignore
 !/README.md
 !/KEYBINDS.md
+!/pkglist.txt
 !/.zshrc
 !/.bashrc
 !/.bash_profile
@@ -29,6 +30,8 @@
 !/.config/nvim/
 !/.config/yazi/
 !/.config/wofi/
+!/.config/rofi/
+!/.config/wlogout/
 !/.config/fuzzel/
 !/.config/dunst/
 !/.config/tmux/
