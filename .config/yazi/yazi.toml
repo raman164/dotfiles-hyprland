@@ -1,0 +1,5 @@
+# Minimal config: only overrides vs yazi defaults. (Backup: yazi.toml.bak-pre-migrate)
+
+[mgr]
+ratio       = [ 2, 3, 4 ]
+show_hidden = true

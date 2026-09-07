@@ -1,0 +1,8 @@
+ENTRY "Mac home" URL "sh://mac/Users/harpreetbhandari"
+ENTRY "Mac Desktop" URL "sh://mac/Users/harpreetbhandari/Desktop"
+ENTRY "vm103 home" URL "sh://vm103/home/rbedit7"
+ENTRY "vm109 home" URL "sh://vm109/home/rbedit7"
+ENTRY "laptop home" URL "sh://laptop/home/rbedit7"
+ENTRY "linuxbox home" URL "sh://linuxbox/home/papa"
+ENTRY "Local home" URL "/home/rbedit7"
+ENTRY "Local /tmp" URL "/tmp"

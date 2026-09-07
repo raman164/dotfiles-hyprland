@@ -1,0 +1,54 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+
+[power_events]
+
+[power_events.dbus_query_object]
+path = "/org/freedesktop/UPower/devices/line_power_ADP1"
+
+[[power_events.dbus_signal_match_rules]]
+object_path = "/org/freedesktop/UPower/devices/line_power_ADP1"
+
+
+[profiles.four-monitors-horizontal]
+config_file = "/home/rbedit7/.config/hyprdynamicmonitors/hyprconfigs/four-monitors-horizontal.go.tmpl"
+config_file_type = "template"
+[profiles.four-monitors-horizontal.conditions]
+
+[[profiles.four-monitors-horizontal.conditions.required_monitors]]
+description = "ST Electronics Systems Assembly Pte Ltd 0xAFC9"
+monitor_tag = "monitor0"
+
+[[profiles.four-monitors-horizontal.conditions.required_monitors]]
+description = "Wacom Tech CintiqPro24P 2FH00F1001987"
+monitor_tag = "monitor1"
+
+[[profiles.four-monitors-horizontal.conditions.required_monitors]]
+description = "BNQ BenQ PD2700U ETL9J02269SL0"
+monitor_tag = "monitor2"
+
+[[profiles.four-monitors-horizontal.conditions.required_monitors]]
+description = "BNQ BenQ PD3200U R6L06166019"
+monitor_tag = "monitor3"
+
+[profiles.four-monitors-vertical]
+config_file = "/home/rbedit7/.config/hyprdynamicmonitors/hyprconfigs/four-monitors-vertical.go.tmpl"
+config_file_type = "template"
+priority = 10
+[profiles.four-monitors-vertical.conditions]
+
+[[profiles.four-monitors-vertical.conditions.required_monitors]]
+description = "ST Electronics Systems Assembly Pte Ltd 0xAFC9"
+monitor_tag = "monitor0"
+
+[[profiles.four-monitors-vertical.conditions.required_monitors]]
+description = "Wacom Tech CintiqPro24P 2FH00F1001987"
+monitor_tag = "monitor1"
+
+[[profiles.four-monitors-vertical.conditions.required_monitors]]
+description = "BNQ BenQ PD2700U ETL9J02269SL0"
+monitor_tag = "monitor2"
+
+[[profiles.four-monitors-vertical.conditions.required_monitors]]
+description = "BNQ BenQ PD3200U R6L06166019"
+monitor_tag = "monitor3"

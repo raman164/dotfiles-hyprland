@@ -1,0 +1,118 @@
+# ============================================================
+#  Home-directory dotfiles repo: allowlist model.
+#  Everything is ignored by default; tracked paths are opted in
+#  explicitly below. This keeps browser/editor state, caches and
+#  credentials out of a PUBLIC repo by construction.
+# ============================================================
+
+# --- ignore everything at the top level ---
+/*
+
+# --- opt in: top-level files ---
+!/.gitignore
+!/README.md
+!/KEYBINDS.md
+!/.zshrc
+!/.bashrc
+!/.bash_profile
+!/.bash_logout
+!/screenshots/
+!/scripts/
+
+# --- opt in: .config, then ignore all of it and opt back in ---
+!/.config/
+/.config/*
+
+!/.config/hypr/
+!/.config/waybar/
+!/.config/foot/
+!/.config/nvim/
+!/.config/yazi/
+!/.config/wofi/
+!/.config/fuzzel/
+!/.config/dunst/
+!/.config/tmux/
+!/.config/btop/
+!/.config/zathura/
+!/.config/kitty/
+!/.config/fastfetch/
+!/.config/neofetch/
+!/.config/waypaper/
+!/.config/hyprdynamicmonitors/
+!/.config/gtk-2.0/
+!/.config/gtk-3.0/
+!/.config/qt5ct/
+!/.config/qt6ct/
+!/.config/xsettingsd/
+!/.config/Thunar/
+!/.config/xfce4/
+!/.config/xarchiver/
+!/.config/nwg-look/
+!/.config/mc/
+!/.config/starship.toml
+!/.config/starship2.toml
+!/.config/mimeapps.list
+!/.config/alacritty/
+
+# ============================================================
+#  Exclusions that apply inside the opted-in paths
+# ============================================================
+
+# Editor/tool backups and scratch copies
+*.bak
+*.bak.*
+*.bak-*
+*.bak[0-9]*
+*.backup
+*.backup.*
+*.pre[A-Za-z]*
+*(tokyo)
+*(org)
+*(vague)
+*(nightfly)
+*(blink)
+*~
+*.old
+*.orig
+*.rej
+*.swp
+*.tmp
+*.log
+.config/nvim/_archive/
+.config/hypr/monitor.conf.backup
+
+# Stray archives — never useful in a config repo
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.rar
+
+# Bulky third-party theme checkouts (upstream, not ours)
+.config/alacritty/themes/
+.config/alacritty/alacritty.yml
+.config/fastfetch/images/
+
+# Plugin/runtime state that regenerates itself
+.config/nvim/lazy-lock.json.bak
+.config/yazi/plugins/
+.config/waybar/themes/*/[Cc]ache/
+
+# ============================================================
+#  Never track: credentials and machine-local secrets
+# ============================================================
+.netrc
+.tabby-local-token
+.claude.json
+.claude.json.backup.*
+.config/rclone/
+.config/gh/
+.config/github-copilot/
+.config/libaccounts-glib/
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*token*
+*secret*
+*credential*

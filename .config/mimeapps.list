@@ -1,0 +1,12 @@
+[Added Associations]
+text/css=code.desktop;
+text/markdown=nvim.desktop;org.pwmt.zathura.desktop;
+application/x-shellscript=code.desktop;
+application/epub+zip=calibre-gui.desktop;org.pwmt.zathura.desktop;calibre-ebook-edit.desktop;calibre-ebook-viewer.desktop;
+application/pdf=com.github.xournalpp.xournalpp.desktop;com.github.jeromerobert.pdfarranger.desktop;okularApplication_pdf.desktop;calibre-ebook-viewer.desktop;org.pwmt.zathura-pdf-poppler.desktop;
+text/html=firefox.desktop;
+
+[Default Applications]
+application/epub+zip=calibre-ebook-viewer.desktop
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
