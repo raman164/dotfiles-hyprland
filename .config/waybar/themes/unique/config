@@ -14,9 +14,13 @@
     // protocol. hyprland/workspaces sends the legacy string "dispatch workspace N"
     // over Hyprland's socket, which the lua config provider rejects as invalid
     // lua -- so clicking a number did nothing. Same CSS selectors as before.
+    // sort-by-id sorts by waybar's own insertion index (the order Hyprland
+    // enumerates workspaces in, newest first) -- NOT the workspace number, so
+    // the bar read "3 2 1". Sort by name instead: Hyprland names them "1".."10".
     "ext/workspaces": {
         "on-click": "activate",
-        "sort-by-id": true
+        "sort-by-name": true,
+        "sort-by-id": false
     },
 
     "modules-center": [
