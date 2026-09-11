@@ -1,9 +1,9 @@
 /* Override GTK selection colors for wofi */
-@define-color selected_bg_color #12121e;
+@define-color selected_bg_color #3d59a1;
 @define-color selected_fg_color #c0caf5;
 
 *:selected {
-    background-color: #12121e;
+    background-color: #3d59a1;
     color: #c0caf5;
 }
 
