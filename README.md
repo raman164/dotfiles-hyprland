@@ -13,6 +13,11 @@ Tiled workspace — neovim beside a shell:
 
 ![Neovim workspace](screenshots/nvim-workspace.png)
 
+Paperlike — the light theme, applied with `SUPER+T`; btop and fastfetch in fresh
+foot windows:
+
+![Paperlike theme](screenshots/paperlike-showcase.png)
+
 ## Software
 
 | Role | Choice |
@@ -64,6 +69,7 @@ pkglist.txt            # explicitly installed packages, repo + AUR split
 | `SUPER+E` | thunar |
 | `SUPER+B` | firefox |
 | `SUPER+S` | waybar theme switcher |
+| `SUPER+T` | desktop theme switcher (default ⇄ paperlike) |
 | `SUPER+R` | foot theme switcher |
 | `SUPER+SHIFT+B` | foot blur toggle |
 | `SUPER+SHIFT+W` | restart waybar |

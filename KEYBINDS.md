@@ -51,6 +51,7 @@ the config, the config wins.
 | Bind | Action |
 |---|---|
 | `SUPER + S` | waybar theme switcher (24 themes) |
+| `SUPER + T` | desktop theme switcher — default (TokyoNight) ⇄ paperlike (light) |
 | `SUPER + SHIFT + W` | restart waybar |
 | `SUPER + CTRL + W` | waypaper (wallpaper picker) |
 | `SUPER + R` | foot theme switcher |
