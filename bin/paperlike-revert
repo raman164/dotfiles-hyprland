@@ -26,7 +26,7 @@ echo "Reverting from $BK …"
 # They are theme-AWARE: their "default" branch reproduces the original config
 # exactly, and behaviour is driven by the current_theme marker written below.
 # Restoring them would strip the wiring and leave dark syntax + light lualine.
-for f in hypr/hyprland.conf hypr/hyprland.lua hypr/hyprpaper.conf foot/foot.ini dunst/dunstrc btop/btop.conf gtk-3.0/settings.ini gtk-3.0/gtk.css wofi/style.css fuzzel/fuzzel.ini; do
+for f in hypr/hyprland.conf hypr/hyprland.lua hypr/hyprpaper.conf foot/foot.ini dunst/dunstrc btop/btop.conf gtk-3.0/settings.ini gtk-3.0/gtk.css wofi/style.css fuzzel/fuzzel.ini xsettingsd/xsettingsd.conf; do
     [ -f "$BK/files/$f" ] && { command cp -p "$BK/files/$f" "$C/$f"; ok "restored $f"; }
 done
 
@@ -40,6 +40,9 @@ eval "gsettings set org.gnome.desktop.interface gtk-theme    $gtk_theme"
 eval "gsettings set org.gnome.desktop.interface icon-theme   $icon_theme"
 eval "gsettings set org.gnome.desktop.interface color-scheme $color_scheme"
 ok "gsettings"
+
+# xsettingsd was restored in the loop above; tell the daemon to re-read it.
+pkill -HUP xsettingsd 2>/dev/null   # no-op when the daemon is not running
 
 echo default > "$C/nvim/current_theme"
 ok "nvim back to vaporwave (restart nvim)"

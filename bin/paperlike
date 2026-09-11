@@ -110,6 +110,24 @@ if [ -d "$HOME/.themes/PaperLike-Light" ]; then
     ok "GTK (PaperLike-Light + Papirus-Light)"
 else no "GTK (~/.themes/PaperLike-Light missing)"; fi
 
+# 7a. xsettingsd - XWayland/GTK2 apps read this, and nothing else writes it
+#     correctly: nwg-look shells out to `gsettings get` and folds stderr into
+#     the values, which is how this file ended up holding dconf-CRITICAL noise.
+#     Write the keys literally. Back the file up first - the installer's
+#     snapshot predates this step, so revert would have nothing to restore.
+XS="$C/xsettingsd/xsettingsd.conf"
+if [ -f "$XS" ]; then
+    _TSF="$C/.paperlike-backup-latest"
+    if [ -f "$_TSF" ]; then
+        _XBK="$C/.paperlike-backup-$(cat "$_TSF")/files/xsettingsd"
+        # only on first apply - a later one would snapshot paperlike's own values
+        [ -f "$_XBK/xsettingsd.conf" ] || { mkdir -p "$_XBK"; command cp -p "$XS" "$_XBK/"; }
+    fi
+    sed -i 's|^Net/ThemeName .*|Net/ThemeName "PaperLike-Light"|; s|^Net/IconThemeName .*|Net/IconThemeName "Papirus-Light"|' "$XS"
+    pkill -HUP xsettingsd 2>/dev/null   # no-op when the daemon is not running
+    ok "xsettingsd (XWayland apps)"
+else no "xsettingsd"; fi
+
 # 7b. nvim - onedarkpro has an `onelight`; colorscheme.lua reads this marker
 echo paperlike > "$C/nvim/current_theme"
 ok "nvim (onelight; restart nvim to pick it up)"
