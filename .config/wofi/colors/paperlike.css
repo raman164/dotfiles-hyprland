@@ -1,0 +1,7 @@
+/* paperlike - vm103's papercolor with fg #2d2d2d */
+@define-color bg #eeeeee;
+@define-color bg-dark #e4e4e4;
+@define-color fg #2d2d2d;
+@define-color border #5e5e5e;
+@define-color accent #6a6a6a;
+@define-color selected #d8d8d8;

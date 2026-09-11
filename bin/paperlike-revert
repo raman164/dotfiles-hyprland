@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+# Restore the laptop to the exact theme state captured before paperlike was installed.
+set -uo pipefail
+
+# --- session env (must be right or restarted daemons cannot reach Wayland) ---
+# uid is NOT 1000 on every host - derive it, never hardcode.
+_U=$(id -u)
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$_U}"
+export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=$XDG_RUNTIME_DIR/bus}"
+if [ -z "${WAYLAND_DISPLAY:-}" ]; then
+    export WAYLAND_DISPLAY=$(find "$XDG_RUNTIME_DIR" -maxdepth 1 -name "wayland-[0-9]*" ! -name "*.lock" -printf "%f\\n" 2>/dev/null | head -1)
+fi
+if [ -z "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+    export HYPRLAND_INSTANCE_SIGNATURE=$(ls "$XDG_RUNTIME_DIR/hypr" 2>/dev/null | head -1)
+fi
+C="$HOME/.config"
+ok(){ printf '  \033[32m✓\033[0m %s\n' "$1"; }
+
+TSF="$C/.paperlike-backup-latest"
+[ -f "$TSF" ] || { echo "No backup marker at $TSF - nothing to revert."; exit 1; }
+BK="$C/.paperlike-backup-$(cat "$TSF")"
+[ -d "$BK" ] || { echo "Backup dir missing: $BK"; exit 1; }
+
+echo "Reverting from $BK …"
+# NOTE: nvim's colorscheme.lua / lualine.lua are deliberately NOT restored here.
+# They are theme-AWARE: their "default" branch reproduces the original config
+# exactly, and behaviour is driven by the current_theme marker written below.
+# Restoring them would strip the wiring and leave dark syntax + light lualine.
+for f in hypr/hyprland.conf hypr/hyprland.lua hypr/hyprpaper.conf foot/foot.ini dunst/dunstrc btop/btop.conf gtk-3.0/settings.ini gtk-3.0/gtk.css wofi/style.css fuzzel/fuzzel.ini; do
+    [ -f "$BK/files/$f" ] && { command cp -p "$BK/files/$f" "$C/$f"; ok "restored $f"; }
+done
+
+# shellcheck disable=SC1090
+. "$BK/state.env"
+[ -n "${waybar_config:-}" ] && ln -sf "$waybar_config" "$C/waybar/config"
+[ -n "${waybar_style:-}"  ] && ln -sf "$waybar_style"  "$C/waybar/style.css"
+ok "waybar symlinks"
+
+eval "gsettings set org.gnome.desktop.interface gtk-theme    $gtk_theme"
+eval "gsettings set org.gnome.desktop.interface icon-theme   $icon_theme"
+eval "gsettings set org.gnome.desktop.interface color-scheme $color_scheme"
+ok "gsettings"
+
+echo default > "$C/nvim/current_theme"
+ok "nvim back to vaporwave (restart nvim)"
+
+# borders are live state - the lua parser needs eval, not keyword
+# hyprland.lua was restored above; one reload puts back borders, opacity,
+# blur and the foot window rules together.
+hyprctl reload >/dev/null 2>&1
+ok "hyprland reloaded (borders + opacity + blur)"
+
+# Wallpaper: waypaper owns this, not hyprpaper.conf. Restore the exact entry that
+# was live when paperlike was applied, into waypaper's config AND via hyprpaper IPC.
+WPCFG="$C/waypaper/config.ini"
+PREVF="$C/.paperlike-prev-wallpaper"
+if [ -s "$PREVF" ]; then
+    PREV_W=$(cat "$PREVF")
+    WPATH="${PREV_W/#\~/$HOME}"        # waypaper stores ~-relative paths
+    WPATH="${WPATH#*,}"                 # tolerate an old "MON,path" record
+    if [ -f "$WPATH" ]; then
+        [ -f "$WPCFG" ] && sed -i "s|^wallpaper[[:space:]]*=.*|wallpaper = $PREV_W|" "$WPCFG"
+        MON=$(hyprctl monitors -j 2>/dev/null | python3 -c "import sys,json;print(json.load(sys.stdin)[0]['name'])" 2>/dev/null)
+        MON="${MON:-eDP-1}"
+        sed -i "s|^preload[[:space:]]*=.*|preload = $WPATH|; s|^wallpaper[[:space:]]*=.*|wallpaper = $MON,$WPATH|" "$C/hypr/hyprpaper.conf"
+        ok "wallpaper -> $(basename "$WPATH")"
+    else
+        no_wall=1
+    fi
+fi
+
+# these had no symlink before paperlike; remove ours rather than repoint it
+[ -z "${rofi_theme:-}"    ] && rm -f "$C/rofi/themes/theme.rasi"
+rm -f "$C/wofi/colors/theme.css"   # symlink did not exist before paperlike
+[ -z "${wlogout_theme:-}" ] && rm -f "$C/wlogout/colors/theme.css"
+rm -f "$C/gtk-4.0"          # was absent before
+ok "removed symlinks that did not exist before"
+
+# (no nwg-look: settings.ini is restored verbatim from the backup)
+for p in waybar dunst hyprpaper; do killall "$p" 2>/dev/null; done
+sleep 0.5
+for p in waybar dunst hyprpaper; do setsid -f "$p" >/dev/null 2>&1; done
+hyprctl reload >/dev/null 2>&1
+sleep 1.0
+if [ -s "$PREVF" ] && [ -n "${WPATH:-}" ] && [ -f "$WPATH" ]; then
+    hyprctl hyprpaper unload all >/dev/null 2>&1
+    hyprctl hyprpaper preload "$WPATH" >/dev/null 2>&1
+    hyprctl hyprpaper wallpaper "${MON:-eDP-1},$WPATH" >/dev/null 2>&1
+fi
+ok "restarted waybar / dunst / hyprpaper"
+
+echo
+echo "Reverted to the pre-paperlike state. Backup kept at: $BK"
+echo "paperlike's own files are still on disk (inert). To delete them too:"
+echo "  rm -rf ~/.config/waybar/themes/paperlike ~/.themes/PaperLike-Light \\"
+echo "         ~/.config/foot/themes/paperlike ~/.config/rofi/themes/paperlike.rasi \\"
+echo "         ~/.config/wlogout/colors/paperlike.css ~/.config/dunst/themes/paperlike \\"
+echo "         ~/.config/hypr/wallpaper/paperlike.png"

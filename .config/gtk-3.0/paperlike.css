@@ -1,0 +1,73 @@
+/* paperlike - force true paper surfaces.
+   PaperColor-Light darkens surfaces with GTK shade()/gradients, which renders
+   #d7d7d7-#d8d8d8 instead of #eeeeee. These rules override that.
+   Restored from backup by `paperlike-revert`. */
+
+@define-color paper      #eeeeee;
+@define-color paper_sub  #e4e4e4;
+@define-color paper_fg   #2d2d2d;
+@define-color paper_sel  #0087af;
+
+window, .background, dialog, popover, .popup,
+notebook, notebook stack, stack, box, paned, grid,
+scrolledwindow, viewport, .frame {
+    background-color: @paper;
+    background-image: none;
+}
+
+/* file/list/text views - the big surfaces that looked dull */
+.view, treeview.view, iconview, textview, textview text,
+list, list row, flowbox, flowboxchild, columnview, gridview {
+    background-color: @paper;
+    background-image: none;
+    color: @paper_fg;
+}
+
+/* chrome: one step down so it separates from the content */
+headerbar, .titlebar, toolbar, .toolbar, menubar, .menubar,
+.path-bar, actionbar, searchbar, statusbar {
+    background-color: @paper_sub;
+    background-image: none;
+    color: @paper_fg;
+}
+
+.sidebar, placessidebar, placessidebar list, placessidebar row,
+.sidebar list, stacksidebar {
+    background-color: @paper_sub;
+    background-image: none;
+}
+
+entry, spinbutton, textview.view {
+    background-color: #f6f6f6;
+    background-image: none;
+    color: @paper_fg;
+}
+
+/* selection - was tokyonight dark (#12121e), wrong on a light theme.
+   Kept as an explicit override because wofi needs it. */
+@define-color selected_bg_color @paper_sel;
+@define-color selected_fg_color @paper;
+*:selected, list row:selected, .view:selected, treeview.view:selected {
+    background-color: @paper_sel;
+    color: @paper;
+}
+
+/* wofi selection.
+   This sheet loads at GTK USER priority, which beats wofi's own `-s` stylesheet,
+   so `#entry:selected` has to be settled here or wofi's rules are ignored.
+   Previously the blue painted only a 2px frame round the row (the children drew
+   over the middle); make the children transparent so it reads as one solid bar. */
+#entry:selected {
+    background-color: @paper_sel;
+    border: none;
+    box-shadow: none;
+    outline-style: none;
+    outline-width: 0;
+    -gtk-outline-radius: 0;
+}
+
+#entry:selected * ,
+#entry:selected #text {
+    background-color: transparent;
+    color: @paper;
+}

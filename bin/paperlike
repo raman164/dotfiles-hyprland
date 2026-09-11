@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+# Apply the 'paperlike' theme (PaperColor Light, fg #2d2d2d).
+# Every file it touches was backed up by the installer; run `paperlike-revert`
+# to put the machine back exactly as it was.
+set -uo pipefail
+
+# --- session env (must be right or restarted daemons cannot reach Wayland) ---
+# uid is NOT 1000 on every host - derive it, never hardcode.
+_U=$(id -u)
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$_U}"
+export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=$XDG_RUNTIME_DIR/bus}"
+if [ -z "${WAYLAND_DISPLAY:-}" ]; then
+    export WAYLAND_DISPLAY=$(find "$XDG_RUNTIME_DIR" -maxdepth 1 -name "wayland-[0-9]*" ! -name "*.lock" -printf "%f\\n" 2>/dev/null | head -1)
+fi
+if [ -z "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+    export HYPRLAND_INSTANCE_SIGNATURE=$(ls "$XDG_RUNTIME_DIR/hypr" 2>/dev/null | head -1)
+fi
+
+C="$HOME/.config"
+ok(){ printf '  \033[32m✓\033[0m %s\n' "$1"; }
+no(){ printf '  \033[31m✗\033[0m %s\n' "$1"; }
+
+echo "Applying paperlike…"
+
+# 1. hyprland window borders
+#    Hyprland 0.56 uses the LUA config provider - hyprland.conf is dead here,
+#    and `hyprctl keyword` is rejected by the non-legacy parser. Edit the .lua
+#    and push it live with `hyprctl eval`.
+if [ -f "$C/hypr/hyprland.lua" ]; then
+    sed -i 's|active_border = "rgba(7aa2f7aa)"|active_border = "rgba(5e5e5eff)"|; s|inactive_border = "rgba(414868aa)"|inactive_border = "rgba(bcbcbcff)"|' "$C/hypr/hyprland.lua"
+    # A light theme must be OPAQUE. The dark setup ran every window at 0.85 and
+    # darkened the blur backdrop (brightness 0.40); on paper that blends windows
+    # into the wallpaper and is what makes the whole desktop look washed out.
+    sed -i 's|active_opacity = 0\.85|active_opacity = 1.0|; s|fullscreen_opacity = 0\.95|fullscreen_opacity = 1.0|; s|opacity = "0\.85 0\.75"|opacity = "1.0 1.0"|; s|brightness = 0\.40|brightness = 1.0|' "$C/hypr/hyprland.lua"
+    hyprctl reload >/dev/null 2>&1
+    ok "hyprland borders + opaque windows (lua)"
+else no "hyprland borders (hyprland.lua missing)"; fi
+
+# 2. waybar - reuses the existing Super+S theme-switcher layout
+if [ -d "$C/waybar/themes/paperlike" ]; then
+    ln -sf "$C/waybar/themes/paperlike/config"    "$C/waybar/config"
+    ln -sf "$C/waybar/themes/paperlike/style.css" "$C/waybar/style.css"
+    killall waybar 2>/dev/null; sleep 0.3; setsid -f waybar >/dev/null 2>&1
+    ok "waybar"
+else no "waybar (themes/paperlike missing)"; fi
+
+# 3. foot - swap the include, and force alpha opaque
+#    (foot.ini's own [colors-dark] alpha=0.1 sits AFTER the include and would win)
+if [ -f "$C/foot/themes/paperlike" ]; then
+    sed -i "s|^include.*|include=$C/foot/themes/paperlike|" "$C/foot/foot.ini"
+    sed -i '/^\[colors-dark\]/,/^\[/{s/^alpha=.*/alpha=1.0/}' "$C/foot/foot.ini"
+    ok "foot (opaque; new terminals only)"
+else no "foot"; fi
+
+# 4. dunst - replace the three urgency colour blocks
+if [ -f "$C/dunst/themes/paperlike" ]; then
+python3 - "$C/dunst/dunstrc" "$C/dunst/themes/paperlike" <<'PY'
+import re, sys
+rc, theme = sys.argv[1], sys.argv[2]
+s = open(rc).read()
+block = open(theme).read().rstrip() + "\n"
+# drop existing urgency_* sections, then append the theme's
+s = re.sub(r'(?ms)^\[urgency_(low|normal|critical)\].*?(?=^\[|\Z)', '', s)
+open(rc, 'w').write(s.rstrip() + "\n\n" + block)
+PY
+    killall dunst 2>/dev/null; sleep 0.3; setsid -f dunst >/dev/null 2>&1
+    ok "dunst"
+else no "dunst"; fi
+
+# 5. rofi + 6. wlogout
+[ -f "$C/rofi/themes/paperlike.rasi" ] && { ln -sf "$C/rofi/themes/paperlike.rasi" "$C/rofi/themes/theme.rasi"; ok "rofi"; } || no "rofi"
+[ -f "$C/wlogout/colors/paperlike.css" ] && { ln -sf "$C/wlogout/colors/paperlike.css" "$C/wlogout/colors/theme.css"; ok "wlogout"; } || no "wlogout"
+
+# 6b. wofi / rofi / fuzzel - matched to vm103's papercolor, fg #2d2d2d
+if [ -f "$C/wofi/colors/paperlike.css" ] && [ -f "$C/wofi/style.css.paperlike" ]; then
+    ln -sf "$C/wofi/colors/paperlike.css" "$C/wofi/colors/theme.css"
+    command cp -f "$C/wofi/style.css.paperlike" "$C/wofi/style.css"
+    ok "wofi"
+else no "wofi"; fi
+
+if [ -f "$C/fuzzel/fuzzel.ini.paperlike" ]; then
+    # splice ONLY the [colors] block so [main]/[border] etc survive
+    python3 - "$C/fuzzel/fuzzel.ini" "$C/fuzzel/fuzzel.ini.paperlike" <<'PYF'
+import re, sys
+ini, new = sys.argv[1], sys.argv[2]
+s = open(ini).read()
+block = open(new).read().strip() + "\n"
+if re.search(r'(?ms)^\[colors\].*?(?=^\[|\Z)', s):
+    s = re.sub(r'(?ms)^\[colors\].*?(?=^\[|\Z)', block + "\n", s, count=1)
+else:
+    s = s.rstrip() + "\n\n" + block
+open(ini, 'w').write(s)
+PYF
+    ok "fuzzel"
+else no "fuzzel"; fi
+
+# 7. GTK
+if [ -d "$HOME/.themes/PaperLike-Light" ]; then
+    gsettings set org.gnome.desktop.interface gtk-theme    'PaperLike-Light'
+    gsettings set org.gnome.desktop.interface icon-theme   'Papirus-Light'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+    ln -sfn "$HOME/.themes/PaperLike-Light/gtk-4.0" "$C/gtk-4.0"
+    # Write the gtk3 ini keys directly. NOT nwg-look -x: it shells out to
+    # `gsettings get` and folds stderr into the values, which corrupts the
+    # file, and it silently rewrites hintstyle/event-sounds too.
+    sed -i "s|^gtk-theme-name=.*|gtk-theme-name=PaperLike-Light|; s|^gtk-icon-theme-name=.*|gtk-icon-theme-name=Papirus-Light|" "$C/gtk-3.0/settings.ini"
+    # PaperColor-Light darkens surfaces via GTK shade()/gradients and renders
+    # ~#d7d7d7 instead of paper. This user override forces the real thing.
+    [ -f "$C/gtk-3.0/paperlike.css" ] && command cp -f "$C/gtk-3.0/paperlike.css" "$C/gtk-3.0/gtk.css"
+    ok "GTK (PaperLike-Light + Papirus-Light)"
+else no "GTK (~/.themes/PaperLike-Light missing)"; fi
+
+# 7b. nvim - onedarkpro has an `onelight`; colorscheme.lua reads this marker
+echo paperlike > "$C/nvim/current_theme"
+ok "nvim (onelight; restart nvim to pick it up)"
+
+# 8. btop
+[ -f "$C/btop/btop.conf" ] && { sed -i 's|^color_theme.*|color_theme = "/usr/share/btop/themes/paper.theme"|' "$C/btop/btop.conf"; ok "btop"; } || no "btop"
+
+# 9. wallpaper
+WALL="$C/hypr/wallpaper/paperlike.png"
+# Wallpapers are managed by WAYPAPER, not hyprpaper.conf. hyprpaper-launch.sh ends
+# with `waypaper --restore`, so waypaper's config is the source of truth and would
+# override anything written straight into hyprpaper.conf (including on reboot).
+WPCFG="$C/waypaper/config.ini"
+PREVF="$C/.paperlike-prev-wallpaper"
+if [ -f "$WPCFG" ]; then
+    PREV_W=$(grep -m1 '^wallpaper' "$WPCFG" | sed 's/^wallpaper[[:space:]]*=[[:space:]]*//')
+    case "$PREV_W" in
+        ""|*paperlike.png) : ;;                     # don't overwrite the saved value
+        *) printf '%s\n' "$PREV_W" > "$PREVF" ;;
+    esac
+fi
+
+WALL="$C/hypr/wallpaper/paperlike.png"
+if [ -f "$WALL" ]; then
+    MON=$(hyprctl monitors -j 2>/dev/null | python3 -c "import sys,json;print(json.load(sys.stdin)[0]['name'])" 2>/dev/null)
+    MON="${MON:-eDP-1}"
+    [ -f "$WPCFG" ] && sed -i "s|^wallpaper[[:space:]]*=.*|wallpaper = $WALL|" "$WPCFG"
+    sed -i "s|^preload[[:space:]]*=.*|preload = $WALL|; s|^wallpaper[[:space:]]*=.*|wallpaper = $MON,$WALL|" "$C/hypr/hyprpaper.conf"
+    hyprctl hyprpaper unload all >/dev/null 2>&1
+    hyprctl hyprpaper preload "$WALL" >/dev/null 2>&1
+    hyprctl hyprpaper wallpaper "$MON,$WALL" >/dev/null 2>&1
+    ok "wallpaper (flat #e4e4e4 on $MON)"
+else no "wallpaper"; fi
+
+hyprctl reload >/dev/null 2>&1
+echo
+echo "paperlike applied.  Undo with:  paperlike-revert"
+echo "Note: already-open foot windows keep the old colours - open a new one."

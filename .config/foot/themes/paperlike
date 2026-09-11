@@ -1,0 +1,54 @@
+# -*- conf -*-
+# paperlike - PaperColor Light base, foreground #2d2d2d.
+# ANSI colours re-picked for vividness: the stock PaperColor light set renders
+# magenta as plain grey (#878787) and yellow as olive. Every colour below was
+# checked for >=4.5:1 (regular) / >=3.2:1 (bright) contrast against #eeeeee.
+# On a light background "bright" must be RICHER, not lighter.
+
+[colors-dark]
+alpha=1.0
+cursor=eeeeee 2d2d2d
+background=eeeeee
+foreground=2d2d2d
+selection-foreground=2d2d2d
+selection-background=d0d0d0
+regular0=e4e4e4
+regular1=cc0000
+regular2=007700
+regular3=846600
+regular4=0055d4
+regular5=a800a8
+regular6=007070
+regular7=2d2d2d
+bright0=bcbcbc
+bright1=ee0000
+bright2=009900
+bright3=9c7900
+bright4=0077ee
+bright5=cc00cc
+bright6=009090
+bright7=1c1c1c
+
+[colors-light]
+alpha=1.0
+cursor=eeeeee 2d2d2d
+background=eeeeee
+foreground=2d2d2d
+selection-foreground=2d2d2d
+selection-background=d0d0d0
+regular0=e4e4e4
+regular1=cc0000
+regular2=007700
+regular3=846600
+regular4=0055d4
+regular5=a800a8
+regular6=007070
+regular7=2d2d2d
+bright0=bcbcbc
+bright1=ee0000
+bright2=009900
+bright3=9c7900
+bright4=0077ee
+bright5=cc00cc
+bright6=009090
+bright7=1c1c1c

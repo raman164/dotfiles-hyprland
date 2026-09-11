@@ -1,21 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Super+T - pick a full desktop theme (wofi menu), mirroring vm109's switcher.
+# Only two entries: the box's original dark setup, and paperlike.
+_U=$(id -u)
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$_U}"
+export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=$XDG_RUNTIME_DIR/bus}"
 
 declare -A THEMES=(
-    ["󰺹   Dracula"]="~/.config/hypr/scripts/switchmaster.sh -d"
-    ["󱄆   Nord"]="~/.config/hypr/scripts/switchmaster.sh -n"
-    ["󱁕   Everforest"]="~/.config/hypr/scripts/switchmaster.sh -e"
-    ["   Gruvbox"]="~/.config/hypr/scripts/switchmaster.sh -g"
-    ["   Everblush"]="~/.config/hypr/scripts/switchmaster.sh -b"
-  
+    ["   Default  (TokyoNight)"]="revert"
+    ["   Paperlike  (Light)"]="apply"
 )
+order=("   Default  (TokyoNight)" "   Paperlike  (Light)")
 
-theme_names=$(printf "%s\n" "${!THEMES[@]}")
-selected=$(echo -e "$theme_names" | rofi -dmenu -i -p "Select Theme")
-if [ -n "$selected" ]; then
-    command="${THEMES[$selected]}"
-    
-    if [ -n "$command" ]; then
-        eval "$command"
-        notify-send "Theme Changed" "Switched to $selected theme"
-    fi
-fi
+CHOICE=$(printf '%s\n' "${order[@]}" | wofi --dmenu --prompt "Theme:" --width 320 --height 140)
+[ -z "$CHOICE" ] && exit 0
+
+case "${THEMES[$CHOICE]}" in
+    apply)  "$HOME/bin/paperlike"        >/dev/null 2>&1; MSG="Paperlike (light)" ;;
+    revert) "$HOME/bin/paperlike-revert" >/dev/null 2>&1; MSG="Default (TokyoNight)" ;;
+    *) exit 0 ;;
+esac
+command -v notify-send >/dev/null && notify-send "Theme" "$MSG — reopen terminals/Thunar to refresh"

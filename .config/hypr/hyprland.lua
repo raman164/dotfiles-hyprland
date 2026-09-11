@@ -266,6 +266,7 @@ hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("exec ./.config/waybar/waybar
 hl.bind(mainMod .. " + CTRL + W", hl.dsp.exec_cmd("waypaper"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("~/.config/waybar/theme-switcher"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/foot-theme-switch.sh"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("~/.config/hypr/scripts/themeswitcher.sh"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.config/hypr/scripts/wifi-menu.sh"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("~/.config/hypr/scripts/foot-blur-toggle.sh"))
 

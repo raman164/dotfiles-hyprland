@@ -19,6 +19,7 @@
 !/.bash_logout
 !/screenshots/
 !/scripts/
+!/bin/
 
 # --- opt in: .config, then ignore all of it and opt back in ---
 !/.config/
@@ -97,6 +98,7 @@
 .config/fastfetch/images/
 
 # Plugin/runtime state that regenerates itself
+.config/nvim/current_theme
 .config/nvim/lazy-lock.json.bak
 .config/yazi/plugins/
 .config/waybar/themes/*/[Cc]ache/

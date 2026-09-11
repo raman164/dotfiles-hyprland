@@ -1,0 +1,90 @@
+@import "/home/rbedit7/.config/wofi/colors/theme.css";
+
+* {
+    all: unset;
+    font-family: "Iosevka Nerd Font";
+    -GtkWidget-focus-line-width: 0;
+    -GtkWidget-focus-padding: 0;
+}
+
+window {
+    font-size: 14px;
+    border-radius: 5px;
+    border: 2px solid @border;
+    background: @bg;
+}
+
+image {
+    margin-left: .25em;
+    margin-right: .25em;
+    background: transparent;
+}
+
+#input {
+    background: @bg-dark;
+    border-radius: 5px;
+    border: 2px solid @accent;
+    color: @fg;
+    padding: 8px;
+    margin: 5px;
+}
+
+#outer-box {
+    background: @bg;
+    border-radius: 5px;
+    /* wofi paints the panel here, not on `window` - the border has to live on
+       this node or it never renders. */
+    border: 2px solid @border;
+    padding: 5px;
+}
+
+#scroll {
+    margin: 5px;
+}
+
+#inner-box {
+    background: @bg;
+}
+
+#text {
+    color: @fg;
+    padding: 4px;
+}
+
+#entry {
+    border-radius: 5px;
+    padding: 2px;
+}
+
+#entry:selected {
+    background: @selected;
+    border-radius: 5px;
+    /* kill GTK's focus ring around the selected row - highlight only, no outline */
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+#entry {
+    border: none;
+    box-shadow: none;
+}
+
+/* GTK3 ignores the `outline` shorthand - the focus rectangle round the selected
+   row only goes away with the explicit outline-* properties. */
+*, #entry, #entry:selected, #entry:focus, #inner-box, #scroll, #text {
+    outline-style: none;
+    outline-width: 0;
+    outline-offset: 0;
+    outline-color: transparent;
+    -gtk-outline-radius: 0;
+}
+
+#input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#text:selected {
+    color: @fg;
+}
