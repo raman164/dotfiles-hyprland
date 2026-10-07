@@ -79,8 +79,8 @@ hl.config({
 		border_size = 2,
 
 		col = {
-			active_border = "rgba(7aa2f7aa)",
-			inactive_border = "rgba(414868aa)",
+			active_border = "rgba(5e5e5eff)",
+			inactive_border = "rgba(bcbcbcff)",
 		},
 
 		layout = "dwindle",
@@ -92,20 +92,20 @@ hl.config({
 
 	decoration = {
 		rounding = 5,
-		active_opacity = 0.85,
-		inactive_opacity = 0.85,
-		fullscreen_opacity = 0.95,
+		active_opacity = 1.0,
+		inactive_opacity = 1.0,
+		fullscreen_opacity = 1.0,
 		rounding_power = 2,
 
 		blur = {
 			enabled = true,
 			size = 7,
-			passes = 4,
+			passes = 2, -- was 4; 4 made animated frames stutter, 2 looks near-identical
 			new_optimizations = true,
 			ignore_opacity = true,
 			noise = 0.08,
 			contrast = 1.1,
-			brightness = 0.40,
+			brightness = 1.0,
 			xray = false,
 			vibrancy = 0.2,
 			vibrancy_darkness = 0.1,
@@ -122,7 +122,7 @@ hl.config({
 	},
 
 	animations = {
-		enabled = false,
+		enabled = true,
 	},
 
 	dwindle = {
@@ -161,18 +161,50 @@ hl.config({
 			natural_scroll = false,
 		},
 	},
+
+	-- Feel of the 4-finger workspace swipe defined below. The old
+	-- `gestures:workspace_swipe` on/off switch is gone in 0.51+ (the
+	-- hl.gesture() call does that job now), but these tuning knobs stayed.
+	gestures = {
+		workspace_swipe_distance = 300, -- px of travel for a full switch
+		workspace_swipe_cancel_ratio = 0.5, -- < half way back = snap back
+		workspace_swipe_direction_lock = true, -- ignore vertical drift mid-swipe
+		workspace_swipe_create_new = false, -- don't spawn workspace 11 off the end
+		workspace_swipe_forever = true, -- keep going without lifting fingers
+	},
 })
 
--- Animation curves / leaves are kept for reference; animations.enabled is
--- false above, so none of these are currently in effect.
+--------------------
+---- GESTURES ----
+--------------------
+
+-- macOS-style: four fingers left/right switches workspace.
+-- Flip the feel with gestures.workspace_swipe_invert above if it moves
+-- the wrong way (it follows the content, not the fingers, by default).
+hl.gesture({
+	fingers = 4,
+	direction = "horizontal",
+	action = "workspace",
+})
+
+-- Animations are ON, for the macOS-style glide when the 4-finger workspace
+-- swipe is released. This costs GPU time every animated frame, which is why
+-- decoration.blur.passes dropped from 4 to 2 above -- at 4 the whole desktop
+-- stuttered. To undo the whole experiment: ~/.config/hypr/scripts/revert-anims.sh
 hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
+
+-- Ease-out with no overshoot, for the workspace slide. myBezier overshoots
+-- (good for windows popping in, wrong for a workspace settling into place).
+hl.curve("wsSwipe", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
 
 hl.animation({ leaf = "windows", enabled = true, speed = 5, bezier = "myBezier" })
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 5, bezier = "default", style = "popin 80%" })
 hl.animation({ leaf = "border", enabled = true, speed = 5, bezier = "default" })
 hl.animation({ leaf = "borderangle", enabled = true, speed = 5, bezier = "default" })
 hl.animation({ leaf = "fade", enabled = true, speed = 5, bezier = "default" })
-hl.animation({ leaf = "workspaces", enabled = false, speed = 1, bezier = "default" })
+-- speed is in ds (1 = 100ms), so 3 = 300ms: quick enough to feel attached to
+-- your fingers on release, slow enough to read as a slide.
+hl.animation({ leaf = "workspaces", enabled = true, speed = 3, bezier = "wsSwipe" })
 
 --------------------
 ---- LAYER RULES ----
@@ -232,13 +264,13 @@ hl.window_rule({
 hl.window_rule({
 	name = "foot-opacity",
 	match = { class = "^(foot)$" },
-	opacity = "0.85 0.75",
+	opacity = "1.0 1.0",
 })
 
 hl.window_rule({
 	name = "foot-blur-fix",
 	match = { class = "^(foot)$" },
-	opacity = "0.85 0.75",
+	opacity = "1.0 1.0",
 })
 ---------------------
 ---- KEYBINDINGS ----
