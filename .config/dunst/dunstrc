@@ -55,26 +55,6 @@
 [experimental]
     per_monitor_dpi = false
 
-[urgency_low]
-    background = "#181825"
-    foreground = "#CDD6F4"
-    highlight = "#CDD6F4"
-    frame_color = "#181825"
-    timeout = 5
-
-[urgency_normal]
-    background = "#181825"
-    foreground = "#CDD6F4"
-    highlight = "#CDD6F4"
-    frame_color = "#181825"
-    timeout = 5
-
-[urgency_critical]
-    background = "#181825"
-    foreground = "#CDD6F4"
-    frame_color = "#f38ba8"
-    timeout = 1000
-
 [volume]
     appname = "Volume"
     highlight = "#cba6f7"
@@ -84,3 +64,24 @@
     highlight = "#eba0ac"
 
 # vim: ft=cfg
+
+[urgency_low]
+    background = "#eeeeee"
+    foreground = "#2d2d2d"
+    highlight = "#0087af"
+    frame_color = "#e4e4e4"
+    timeout = 5
+
+[urgency_normal]
+    background = "#eeeeee"
+    foreground = "#2d2d2d"
+    highlight = "#0087af"
+    frame_color = "#e4e4e4"
+    timeout = 5
+
+[urgency_critical]
+    background = "#eeeeee"
+    foreground = "#2d2d2d"
+    highlight = "#0087af"
+    frame_color = "#af0000"
+    timeout = 1000
