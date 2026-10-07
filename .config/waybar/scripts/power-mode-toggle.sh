@@ -18,6 +18,9 @@ set_performance_mode() {
     # Enable turbo boost
     echo "0" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo > /dev/null 2>&1
 
+    # Lift the CPU performance cap (TLP sets 50% on battery)
+    echo "100" | sudo tee /sys/devices/system/cpu/intel_pstate/max_perf_pct > /dev/null 2>&1
+
     # Set performance governor
     for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
         [ -f "$cpu" ] && echo "performance" | sudo tee "$cpu" > /dev/null 2>&1
@@ -35,6 +38,9 @@ set_performance_mode() {
 set_battery_mode() {
     # Disable turbo boost
     echo "1" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo > /dev/null 2>&1
+
+    # Cap CPU performance at 50%, matching TLP's battery setting
+    echo "50" | sudo tee /sys/devices/system/cpu/intel_pstate/max_perf_pct > /dev/null 2>&1
 
     # Set powersave governor
     for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
