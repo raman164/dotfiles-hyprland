@@ -59,6 +59,10 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
+-- buffer navigation (hidden files)
+keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+
 -- Move visually selected lines up or down in various modes
 keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move selected lines up or down", noremap = true })
 keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move selected lines up or down", noremap = true })
