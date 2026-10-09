@@ -27,13 +27,12 @@ return {
           },
         },
       },
-      -- disable window_picker for
-      -- explorer to work well with
-      -- window splits
+      -- window_picker: label splits (A/B..) on open
+      -- so you choose which pane gets the file
       actions = {
         open_file = {
           window_picker = {
-            enable = false,
+            enable = true,
           },
         },
       },
